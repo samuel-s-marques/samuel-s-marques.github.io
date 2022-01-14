@@ -11,7 +11,7 @@ Perfect application for content creators to create Q&A rooms with their audience
 
 Made with ReactJS, Next Level Week 2021.
 
-Read more about the app <a href="https://github.com/samuel-s-marques/letmeask">here</a>.
+Read more about the project <a href="https://github.com/samuel-s-marques/letmeask">here</a>.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
