@@ -15,7 +15,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Passionate about computing and technology since a young age. Junior full stack developer entering the mobile development market. Currently learning Flutter and working from home to Crowe Macro.  
+Passionate about computing and technology since a young age. Junior full stack developer entering the mobile development market. Currently learning Flutter and working from home at Crowe Macro.  
 
 Samuel Marques has worked in technology for 6 months. He is an app developer at Crowe Macro, one of the main auditing and consulting companies in Brazil, and he is developing a HR app.
 
