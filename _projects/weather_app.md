@@ -17,7 +17,7 @@ Weather app is a design implementation of <a href="https://www.figma.com/communi
     <li>✅ Custom icons for each weather condition</li>
 </ul>
 
-Read more about the app <a href="https://github.com/samuel-s-marques/weather-app#readme">here</a>.
+Read more about the project <a href="https://github.com/samuel-s-marques/weather-app#readme">here</a>.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
