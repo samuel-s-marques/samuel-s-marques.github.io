@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Weather-app
-description: Weather android app, made with Flutter. 
+description: Weather android app. 
 img: assets/img/weather_app/weather_mockup.jpg
 importance: 1
 category: apps
