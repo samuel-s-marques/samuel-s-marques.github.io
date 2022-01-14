@@ -11,7 +11,7 @@ description: Samuel Marques' portfolio
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: portfolio-website, portfolio, website, personal-website, projects, dev  # add your own keywords or leave empty
+keywords: samuel marques, samuel, samuel s marques, samuel-s-marques, portfolio-website, portfolio, website, personal-website, projects, dev
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🔥 # the emoji used as the favicon
@@ -46,7 +46,7 @@ max_width: 800px
 # Display links to the page with a preview object on social media.
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true #include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://samuel-s-marques.github.io/assets/img/prof_pic_wide.jpg
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -72,7 +72,7 @@ stackoverflow_id: #your stackoverflow id
 contact_note: 
 
 google_analytics:  # your google-analytics ID (format: UA-XXXXXXXXX)
-google_site_verification:  # your google-site-verification ID (Google Search Console)
+google_site_verification:  r-ICJhsbuHLJNIscEwbpga-SZFR2_NH22qtnZ-HrA_w
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
 
