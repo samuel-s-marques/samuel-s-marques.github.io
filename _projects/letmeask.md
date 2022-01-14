@@ -1,7 +1,7 @@
 ---
 layout: page
 title: LetMeAsk
-description: another without an image
+description: Perfect application for content creators to create Q&A rooms with their audience.
 img: assets/img/letmeask/letmeask_mockup.jpg
 importance: 1
 category: websites
