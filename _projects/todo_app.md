@@ -16,7 +16,7 @@ The classic to-do application where a user can write down all the things he want
     <li>✅ Language selector</li>
 </ul>
 
-Read more about the app <a href="https://github.com/samuel-s-marques/todo-app#readme">here</a>.
+Read more about the project <a href="https://github.com/samuel-s-marques/todo-app#readme">here</a>.
 
 
 <div class="row">
