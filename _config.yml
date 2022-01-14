@@ -2,12 +2,12 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Samuel Marques # the website title (if blank, full name will be used instead)
 first_name: Samuel
 middle_name: S.
 last_name: Marques
 email: samuel.s.marques@protonmail.com
-description: 
+description: Samuel Marques' portfolio
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -58,7 +58,7 @@ twitter_username: # your Twitter handle
 linkedin_username: samuel-s-marques # your LinkedIn user name
 scholar_userid: # your Google Scholar ID
 orcid_id: # your ORCID ID
-medium_username: # your Medium username
+medium_username: samuel_marques
 quora_username: # your Quora username
 publons_id: # your ID on Publons
 research_gate_profile: # your profile on ResearchGate
