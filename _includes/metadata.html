@@ -132,6 +132,10 @@
     {%- if sameaslinks != blank -%}
         {%- assign sameaslinks = sameaslinks | split: "" -%}
     {%- endif -%}
+    {%- if site.artstation -%}
+        {%- capture link -%}https://www.artstation.com/{{ site.artstation }}{%- endcapture -%}
+        {%- assign sameaslinks = sameaslinks | push: link -%}
+    {%- endif -%}
 
     <script type="application/ld+json">
       {
