@@ -181,7 +181,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-archives:
-  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them). 
+  enabled: # enables year, tag and category archives (remove if you need to disable one of them). 
   layouts:
     year: archive-year
     tag: archive-tag
@@ -190,36 +190,6 @@ jekyll-archives:
     year: '/blog/:year/'
     tag: '/blog/tag/:name/'
     category: '/blog/category/:name/'
-
-# -----------------------------------------------------------------------------
-# Jekyll Scholar
-# -----------------------------------------------------------------------------
-
-scholar:
-
-  last_name: Einstein
-  first_name: [Albert, A.]
-
-  style: apa
-  locale: en
-
-  source: /_bibliography/
-  bibliography: papers.bib
-  bibliography_template: bib
-  # Note: if you have latex math in your bibtex, the latex filter
-  # preprocessing may conflict with MathJAX if the latter is enabled.
-  # See https://github.com/alshedivat/al-folio/issues/357.
-  bibtex_filters: [latex, smallcaps, superscript]
-
-  replace_strings: true
-  join_strings: true
-
-  details_dir: bibliography
-  details_layout: bibtex.html
-  details_link: Details
-
-  query: "@*"
-
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
