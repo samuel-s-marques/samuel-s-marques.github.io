@@ -1,7 +1,7 @@
 ---
 layout: page
 title: MyURLShortener
-description: a project with a background image
+description: Free and open source URL Shortener with link tracking.
 img: assets/img/myurlshortener/image1.jpg
 importance: 3
 category: websites
