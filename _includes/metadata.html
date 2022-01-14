@@ -136,6 +136,14 @@
         {%- capture link -%}https://www.artstation.com/{{ site.artstation }}{%- endcapture -%}
         {%- assign sameaslinks = sameaslinks | push: link -%}
     {%- endif -%}
+    {%- if site.figma -%}
+        {%- capture link -%}https://www.figma.com/@{{ site.figma }}{%- endcapture -%}
+        {%- assign sameaslinks = sameaslinks | push: link -%}
+    {%- endif -%}
+    {%- if site.behance -%}
+        {%- capture link -%}https://www.behance.net/{{ site.behance }}{%- endcapture -%}
+        {%- assign sameaslinks = sameaslinks | push: link -%}
+    {%- endif -%}
 
     <script type="application/ld+json">
       {
