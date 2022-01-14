@@ -23,7 +23,7 @@ Made with React-Native, Next Level Week 2021.
     <li>✅ Provides the Logout function</li>
 </ul>
 
-Read more about the app <a href="https://github.com/samuel-s-marques/GamePlay">here</a> (portuguese).
+Read more about the project <a href="https://github.com/samuel-s-marques/GamePlay">here</a> (portuguese).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
