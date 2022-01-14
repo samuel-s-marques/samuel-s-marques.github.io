@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Web geek. Hardcore introvert. General student. 
+subtitle: Geek. Hardcore introvert. Technology enthusiast. 
 
 profile:
   align: right
