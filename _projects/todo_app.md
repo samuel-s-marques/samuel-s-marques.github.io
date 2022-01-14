@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Todo-app
-description: The classic to-do application where a user can write down all the things he wants to accomplish. Android only.
+description: To-do application where a user can write down all the things he wants to accomplish.
 img: assets/img/todo_app/image1.jpeg
 importance: 2
 category: apps
