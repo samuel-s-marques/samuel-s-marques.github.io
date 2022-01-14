@@ -30,15 +30,15 @@ Read more about the app <a href="https://github.com/samuel-s-marques/weather-app
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/weather_app/image1.jpg" title="intuitive interface image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/weather_app/image1.jpeg" title="intuitive interface image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/weather_app/image2.jpg" title="detailed forecast image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/weather_app/image2.jpeg" title="detailed forecast image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/weather_app/image3.jpg" title="up to seven days forecast image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/weather_app/image3.jpeg" title="up to seven days forecast image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/weather_app/image4.jpg" title="coverage from anywhere image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/weather_app/image4.jpeg" title="coverage from anywhere image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
