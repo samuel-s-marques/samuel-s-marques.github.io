@@ -1,7 +1,7 @@
 ---
 layout: page
 title: GamePlay
-description: Application to help you connect and organize fun times to play with friends.
+description: App to help you connect and organize fun times to play with friends.
 img: assets/img/gameplay/image1.png
 importance: 3
 category: apps
