@@ -1,0 +1,102 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full name
+      value: Samuel Sobreira Marques
+    - name: Contact
+      value: samuel.s.marques@protonmail.com
+    - name: Languages
+      value: Portuguese (native), English (intermediate)
+
+- title: Work Experience
+  type: table
+  contents:
+    - title: 'Junior software developer'
+      year: 'Aug 21 - now'
+      location: São Paulo
+      description:
+        - 'Developing a human resources app.'
+
+- title: Honors and Awards
+  type: table
+  contents:
+    - title: 'CEAP - Centro Educacional Assistencial Profissionalizante'
+      year: '2019'
+      items:
+        - '1st place (2019) in the Innovation and Science Fair, of CEAP, with the project: "Artificial Psychology". The project consists of a chatbot that aims to help people with depression and anxiety, through conversation.'
+
+- title: Courses
+  type: table-courses
+  contents:
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Python para Data Science: Primeiros passos'
+          link: https://cursos.alura.com.br/certificate/ef9b7711-5c14-42db-a549-9b359fd686e6
+          linkname: 'cert'
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Layouts Responsivos: Trabalhando com layouts mobile'
+          link: https://cursos.alura.com.br/certificate/9519b03a-f65e-4645-81e2-2819bbc09177
+          linkname: 'cert'
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Blockchain para Negócios: aplciações e cases reais'
+          link: https://cursos.alura.com.br/certificate/a242fca5-be3c-466b-ae38-3cc798ae4f2a
+          linkname: 'cert'
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Criando widgets, páginas e navegação com Flutter'
+          link: https://cursos.alura.com.br/certificate/25ee3b40-8909-4f6b-b750-7c0279c56308
+          linkname: 'cert'
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Flutter: Crie e valide formulários para aumentar conversões'
+          link: https://cursos.alura.com.br/certificate/028b86f7-9387-49ba-aced-6f0d0faf07a7
+          linkname: 'cert'
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Flutter: Desenvolva o layout para uma aplicação'
+          link: https://cursos.alura.com.br/certificate/2b46cfba-2d93-4449-b4df-570822723b61
+          linkname: 'cert'
+    - title: Alura
+      year: '2021'
+      items:
+        - name: 'Fundamentos de Flutter: Crie o seu primeiro App'
+          link: https://cursos.alura.com.br/certificate/ab8634df-e40c-4aa8-9347-123b89da5732
+          linkname: 'cert'
+    - title: Cybrary
+      year: '2021'
+      items:
+        - name: 'Introduction to IT & Cybersecurity'
+          link: https://app.cybrary.it/courses/api/certificate/CC-48dc4d66-ee4a-4c79-8c40-6b5fb516f3fb/view
+          linkname: 'cert'
+    - title: Data Science Academy
+      year: '2020'
+      items:
+        - name: 'Inteligência Artificial Fundamentos'
+          link: https://www.datascienceacademy.com.br/certificate/5b4ed2885e4cdee2138b45a0/user/5ef4fcb5e32fc350d45effd1
+          linkname: 'cert'
+    - title: Data Science Academy
+      year: '2020'
+      items:
+        - name: 'Introdução à Ciência de Dados 2.0'
+          link: https://www.datascienceacademy.com.br/certificate/57e4c96f47d7dd071b8b456b/user/5ef4fcb5e32fc350d45effd1
+          linkname: 'cert'
+
+- title: Skills
+  type: list
+  contents: 
+    - '<b>Programming languages</b>: JavaScript, Dart, PHP.'
+    - '<b>Knowledge</b> of web development, Java, Python, Vue.'
+    - '<b>Microcontroller programming experience</b>: Arduino.'
+
+- title: Other Interests
+  type: list
+  contents: 
+    - '<b>Hobbies</b>: Astronomy, movies, music, games'
