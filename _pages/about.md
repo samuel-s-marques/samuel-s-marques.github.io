@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Geek. Hardcore introvert. Technology enthusiast. 
+subtitle: Geek. Technology enthusiast. 
 
 profile:
   align: right
