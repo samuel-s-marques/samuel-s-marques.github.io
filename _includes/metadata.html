@@ -35,7 +35,7 @@
     <!-- OpenGraph -->
     <meta property="og:site_name" content="{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{%- if page.title -%}{{ site.title }} | {{ page.title }}{%- else -%}{{ site.title }}{%- endif -%}" />
+    <meta property="og:title" content="{%- if page.title -%}{{ site.first_name }} {{ site.last_name }} | {{ page.title }}{%- else -%}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{%- endif -%}" />
     <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url | remove_first: 'index.html' }}" />
     <meta property="og:description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}" />
     {% if page.og_image or site.og_image -%}
@@ -45,7 +45,7 @@
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{%- if page.title -%}{{ page.title }}{%- else -%}{{ site.title }}{%- endif -%}" />
+    <meta name="twitter:title" content="{%- if page.title -%}{{ page.title }}{%- else -%}{{ site.first_name }} {{ site.last_name }}{%- endif -%}" />
     <meta name="twitter:description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}" />
     {% if page.og_image or site.og_image -%}
     <meta name="twitter:image" content="{%- if page.og_image -%}{{ page.og_image }}{%- else -%}{{ site.og_image }}{%- endif -%}" />
@@ -129,9 +129,6 @@
         {%- capture link -%}https://stackoverflow.com/users/{{ site.stackoverflow_id }}{%- endcapture -%}
         {%- assign sameaslinks = sameaslinks | push: link -%}
     {%- endif -%}
-    {%- if sameaslinks != blank -%}
-        {%- assign sameaslinks = sameaslinks | split: "" -%}
-    {%- endif -%}
     {%- if site.artstation -%}
         {%- capture link -%}https://www.artstation.com/{{ site.artstation }}{%- endcapture -%}
         {%- assign sameaslinks = sameaslinks | push: link -%}
@@ -144,6 +141,9 @@
         {%- capture link -%}https://www.behance.net/{{ site.behance }}{%- endcapture -%}
         {%- assign sameaslinks = sameaslinks | push: link -%}
     {%- endif -%}
+    {%- if sameaslinks != blank -%}
+        {%- assign sameaslinks = sameaslinks | split: "" -%}
+    {%- endif -%}
 
     <script type="application/ld+json">
       {
@@ -155,7 +155,7 @@
         "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
         "@type": "WebSite",
         "description": "{%- if page.description -%}{{ page.description }}{%- else if site.description -%}{{ site.description }}{%- endif -%}",
-        "headline": "{%- if page.title -%}{{ page.title }}{%- else -%}{{ site.title }}{%- endif -%}",
+        "headline": "{%- if page.title -%}{{ page.title }}{%- else -%}{{ site.first_name }} {{ site.last_name }}{%- endif -%}",
         {% if sameaslinks != blank -%}
         "sameAs": {{ sameaslinks }}, 
         {%- endif %}
