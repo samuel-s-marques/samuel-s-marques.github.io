@@ -40,18 +40,6 @@ html[data-theme='dark'] {
 		background-color: var(--global-code-bg-color);
 		border: solid 1px var(--global-divider-color);
 	}
-
-	.card-title {
-		color: var(--global-text-color-light);
-
-		&:hover {
-			color: var(--global-theme-color);
-		}
-	}
-
-	.card-text {
-		color: #b3b3b3;
-	}
 }
 
 // Mobile devices. With class="hidden-mobile" the element not show
