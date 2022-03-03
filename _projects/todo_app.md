@@ -16,6 +16,7 @@ The classic to-do application where a user can write down all the things he want
     <li>✅ Language selector</li>
 </ul>
 
+Download the app <a href="https://play.google.com/store/apps/details?id=com.samuel.todoapp">here!</a>.
 Read more about the project <a href="https://github.com/samuel-s-marques/todo-app#readme">here</a>.
 
 
