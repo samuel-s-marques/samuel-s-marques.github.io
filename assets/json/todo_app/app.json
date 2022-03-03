@@ -1,7 +1,8 @@
 {
     "app_name":"Todo-app",
-    "versions":{
-       "1.0.0+1":{
+    "versions":[
+       {
+          "version": "1.0.0+1",
           "release_timestamp":"1641945600",
           "release_datetime":"12-01-2022 00:00:00",
           "available_on_playstore":"true",
@@ -24,7 +25,8 @@
              }
           ]
        },
-       "1.0.0+3":{
+       {
+          "version": "1.0.0+3",
           "release_timestamp":"1645315200",
           "release_datetime":"20-02-2022 00:00:00",
           "available_on_playstore":"true",
@@ -53,5 +55,5 @@
              }
           ]
        }
-    }
+    ]
  }
