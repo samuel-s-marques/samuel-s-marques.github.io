@@ -30,7 +30,19 @@
   type: table-courses
   contents:
     - title: Alura
-      year: '2021'
+      year: '2022'
+      items:
+        - name: 'Persistência com Flutter: crie um app com armazenamento interno'
+          link: https://cursos.alura.com.br/certificate/8d906f22-1093-4a1f-9f32-2b5afb898d55
+          linkname: 'cert'
+    - title: Google
+      year: '2022'
+      items:
+        - name: 'Foundations of User Experience (UX) Design'
+          link: https://www.coursera.org/account/accomplishments/certificate/5N8FCAUT6HQB
+          linkname: 'cert'
+    - title: Alura
+      year: '2022'
       items:
         - name: 'Python para Data Science: Primeiros passos'
           link: https://cursos.alura.com.br/certificate/ef9b7711-5c14-42db-a549-9b359fd686e6
