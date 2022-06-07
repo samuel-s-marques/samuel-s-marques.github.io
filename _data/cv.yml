@@ -12,10 +12,11 @@
   type: table
   contents:
     - title: 'Junior software developer'
-      year: 'Aug 21 - now'
+      year: 'Aug 21 - Jun 22'
       location: São Paulo
       description:
-        - 'Developing a human resources app.'
+        - 'Developing a human resources app that aimed to help companies hire people.'
+        - 'Used Flutter, Firebase, Google Maps API, Google API'
 
 - title: Honors and Awards
   type: table
