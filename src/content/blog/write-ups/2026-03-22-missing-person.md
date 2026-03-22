@@ -52,7 +52,7 @@ The missing person mentions attending a MotoGP after party. By googling for "mot
 
 ### Into the Cave
 
-Tracing Bong Leleh's online presence, through Facebook, reveals his side hustle: guiding tourists to **Gua Sumur**, a cave tucked away in the region. His business contact number, **85333137345**, becomes the final piece of the puzzle, answering the questions for "What caves does he take tourists to?" and "What number did the DJ list for his toour busines?". With this, we've reconstructed the missing person's movements, connections, and likely whereabouts.
+Tracing Bong Leleh's online presence, through Facebook, reveals his side hustle: guiding tourists to **Gua Sumur**, a cave tucked away in the region. His business contact number, **85333137345**, becomes the final piece of the puzzle, answering the questions for "What caves does he take tourists to?" and "What number did the DJ list for his tour business?". With this, we've reconstructed the missing person's movements, connections, and likely whereabouts.
 
 ![image.png](/image-4.png)
 
