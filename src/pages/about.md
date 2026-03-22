@@ -1,36 +1,20 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: About
 ---
+## Hi, I'm Samuel Marques.
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+I am a Software Engineer and Mobile Specialist with over **5 years of experience** building high-performance applications. A simple philosophy drives my career: **if it doesn’t challenge you, it won’t change you.** I thrive in environments where innovation isn't just a buzzword, but a requirement for solving complex human and business problems.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+### Education & Background
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+I hold a Bachelor's degree in **Information Systems from FIAP** (2021–2025), where I maintained a **3.25 GPA**. Currently, I am deepening my technical expertise by specializing in **Offensive Cyber Security - Red Team Operations** at FIAP, focusing on the intersection of robust development and proactive security.
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+### Innovation & Recognition
 
-## Tech Stack
+My work often sits at the crossroads of innovation and execution. I’ve been honored to receive recognition for projects that push boundaries:
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+- **Startup One Finalist (2025):** My project, **MedGo**, was selected as one of the **TOP 10** most promising projects across all FIAP undergraduate programs. It was recognized for its business potential, innovation, and execution maturity.
+- **NEXT Runner-Up (2022):** I secured 2nd place with **Vielfalt** (German for "Diversity"), an application designed to bridge the communication gap between neurotypical employees and their managers to foster a more efficient and inclusive workplace.
 
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+I am constantly looking for the "Next" big challenge.
