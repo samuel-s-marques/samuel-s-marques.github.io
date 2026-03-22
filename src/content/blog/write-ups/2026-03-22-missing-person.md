@@ -17,7 +17,7 @@ description: The TryHackMe "Missing Person" challenge is an OSINT (Open Source
 ---
 ## Write-up: TryHackMe - Missing Person
 
-This OSINT (Open Source Intelligence) challenge simulates an easy missing person investigation. The goal is to analyze publicly available data (photos, social media posts, and online accounts) to track the individual's last known activities and connections.
+This [OSINT (Open Source Intelligence) challenge](https://tryhackme.com/room/missingperson) simulates an easy missing person investigation. The goal is to analyze publicly available data (photos, social media posts, and online accounts) to track the individual's last known activities and connections.
 
 
 | Tool | Purpose |
