@@ -30,7 +30,7 @@ This [OSINT (Open Source Intelligence) challenge](https://tryhackme.com/room/mis
 
 The investigation starts with holiday photos. At first glance, they look ordinary, just two pics. One from a MotoGP event. The other, from a restaurant. The restaurant photo is our first breadcrumb.
 
-If we do a reverse search on the image, we find out it was taken in **Cantina Mexicana Kuta Lombok**, in Indonesia. Now, if we Google "MotoGP 2025 Indonesia", we can also find what circuit held the race and when. The [Mandalika International Street Circuit](https://en.wikipedia.org/wiki/Mandalika_International_Street_Circuit). By knowing the missing person went to a MotoGP event, and the restaurant he went, we got the answer to the first three questions: "What is the commercial name of this circuit?" (Pertamina Mandalika International Street Circuit), "When did the event take place?" (03-05/10/2025), and "What is the name of the restaurant?" (Cantina Mexicana).
+If we do a reverse search on the image, we find out it was taken in **Cantina Mexicana Kuta Lombok**, in Indonesia. Now, if we Google "MotoGP 2025 Indonesia", we can also find what circuit held the race and when. The [Mandalika International Street Circuit](https://en.wikipedia.org/wiki/Mandalika_International_Street_Circuit). By knowing the missing person went to a MotoGP event, and the restaurant he went, we got the answer to the first three questions: "What is the commercial name of this circuit?" (**Pertamina Mandalika International Street Circuit**), "When did the event take place?" (03-05/10/2025), and "What is the name of the restaurant?" (**Cantina Mexicana**).
 
 ![image.png](/image.png)
 
@@ -42,7 +42,7 @@ We already know the restaurant, the event, the day, but we need to know when the
 
 ### The After Party
 
-The missing person mentions attending a MotoGP after party. By googling for "motogp 2025 indonesia after party", we can find on social media the *biggest party* after the Moto GP race, at Surfer's Bar Kuta Lombok. Digging deeper, we uncover the bar's full address in Lombok Tengah, (Jl. Raya Kuta, Kuta, Kec. Pujut, Kabupaten Lombok Tengah, Nusa Tenggara Bar). And after watching the video, we discover a new character in the story, a DJ known as **Bong Leleh**. A potential lead.
+The missing person mentions attending a MotoGP after party. By googling for "motogp 2025 indonesia after party", we can find on social media the *biggest party* after the Moto GP race, at Surfer's Bar Kuta Lombok. Digging deeper, we uncover the bar's full address in Lombok Tengah, (**Jl. Raya Kuta, Kuta, Kec. Pujut, Kabupaten Lombok Tengah, Nusa Tenggara Bar**). And after watching the video, we discover a new character in the story, a DJ known as **Bong Leleh**. A potential lead.
 
 ![image.png](/image-2.png)
 
