@@ -7,6 +7,10 @@ ogImage: "Write-up: Bellingcat - Fresh Faced"
 slug: fresh-faced
 featured: false
 draft: false
+tags:
+  - osint
+  - bellingcat
+  - easy
 description: The Bellingcat "Fresh Faced" challenge was to locate Eliot Higgins
   in a YouTube video from his early days, before Bellingcat became widely known.
 ---
