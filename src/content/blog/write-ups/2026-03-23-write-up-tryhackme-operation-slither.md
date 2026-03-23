@@ -14,8 +14,6 @@ tags:
 description: The TryHackMe "Operation Slither" challenge is an OSINT challenge,
   where we need to find the people behind an attack.
 ---
-# Write-up: TryHackMe - Operation Slither
-
 [Operation Slither](https://tryhackme.com/room/operationslitherIU) is a challenge that tests your ability to pivot across platforms, analyze social media clues, and decode hidden messages. The mission: track down the operators of the **Sneaky Viper** group and recover their leaked flags.
 
 ## The Leader
