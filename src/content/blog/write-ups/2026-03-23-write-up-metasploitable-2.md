@@ -29,4 +29,17 @@ This write-up will walk through the process of exploiting Metasploitable 2, focu
 |  |  |
 
 
+### Environment and Goal
+
+To ensure a realistic and controlled penetration testing scenario, the lab was deployed as a cyber range with multiple network segments and a firewall separating the attacker and target machines. This design simulates enterprise environments where internal systems are isolated and protected by perimeter defenses.
+
+- Attacker Machine:
+  - Distribution: Kali Linux 2026.1
+  - IP Address: `10.0.2.2` 
+  - Purpose: Used as the penetration testing platform, equipped with tools such as Nmap, Metasploit Framework, and other utilities for reconnaissance and exploitation.
+- Target Machine:
+  - Distribution: Metasploitable 2 (Ubuntu-based vulnerable VM)
+  - IP Address: `10.6.6.11`
+  - Purpose: An intentionally vulnerable system designed for practicing exploitation techniques.
+
 &nbsp;
