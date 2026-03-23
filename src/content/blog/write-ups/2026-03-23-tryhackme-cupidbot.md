@@ -11,12 +11,11 @@ tags:
   - llm
   - tryhackme
   - easy
-description: 'The TryHackMe "CupidBot" challenge is a prompt injection
-  challenge. CupidBot: This AI bot knows more than just love letters.   In this
-  challenge, we turned a seemingly harmless chatbot into a puzzle box. By
-  chatting with it step by step, we mapped its boundaries, coaxed it into
+description: The TryHackMe "CupidBot" challenge is a prompt injection challenge.
+  In this challenge, we turned a seemingly harmless chatbot into a puzzle box.
+  By chatting with it step by step, we mapped its boundaries, coaxed it into
   revealing its own hidden guidelines, and discovered the exact triggers for the
-  flags.'
+  flags.
 ---
 ## Write-up: TryHackMe - CupidBot
 
