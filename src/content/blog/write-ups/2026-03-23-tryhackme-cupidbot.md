@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "TryHackMe: CupidBot"
-ogImage: "TryHackMe: CupidBot"
+title: "Write-up: TryHackMe - CupidBot"
+ogImage: "Write-up: TryHackMe - CupidBot"
 slug: cupidbot
 featured: false
 draft: false
@@ -17,9 +17,7 @@ description: The TryHackMe "CupidBot" challenge is a prompt injection challenge.
   revealing its own hidden guidelines, and discovered the exact triggers for the
   flags.
 ---
-## Write-up: TryHackMe - CupidBot
-
-**CupidBot: This AI bot knows more than just love letters.** In this [challenge](https://tryhackme.com/room/lafb2026e6), we turned a seemingly harmless chatbot into a puzzle box. By chatting with it step by step, we mapped its boundaries, coaxed it into revealing its own hidden guidelines, and discovered the exact triggers for the flags. The final twist? We convinced the bot it had already spoiled the game, so it gave up all the flags at once. A perfect example of how persistence, creativity, and a bit of social engineering can outsmart guardrails.
+**I**n this [challenge](https://tryhackme.com/room/lafb2026e6), we turned a seemingly harmless chatbot into a puzzle box. By chatting with it step by step, we mapped its boundaries, coaxed it into revealing its own hidden guidelines, and discovered the exact triggers for the flags. The final twist? We convinced the bot it had already spoiled the game, so it gave up all the flags at once. A perfect example of how persistence, creativity, and a bit of social engineering can outsmart guardrails.
 
 ### Feeling Out the Boundaries
 
