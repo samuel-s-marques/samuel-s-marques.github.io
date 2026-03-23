@@ -104,11 +104,11 @@ With the leader and sidekick exposed, the hunt for the final member of the **Sne
 
 ### Back to SoundCloud
 
-We returned to ***myst1cv1x3n***’s SoundCloud account. Digging deeper, we examined their followers list. Most seemed ordinary, but one stood out: **sh4d0wF4NG**. The name fit the group’s pattern perfectly.
+We returned to ***myst1cv1x3n***’s SoundCloud account. Digging deeper, we examined their followers list. Most seemed ordinary, but one stood out: **[sh4d0wF4NG](https://soundcloud.com/sh4d0wf4ng)**. The name fit the group’s pattern perfectly.
 
-Unlike the others, **sh4d0wF4NG** had no Instagram, Threads, or Twitter presence. But there was one clue: they had liked the audio track where the operators discussed scripts and code. That was enough to push us toward a different angle. Developers often leave traces elsewhere.
+Unlike the others, **sh4d0wF4NG** had no Instagram, Threads, or Twitter presence. But there was one clue: they had liked [the audio track](https://soundcloud.com/v1x3n-195859753/prototype2) where the operators discussed scripts and code. That was enough to push us toward a different angle. Developers often leave traces elsewhere.
 
-Sure enough, a search revealed that **sh4d0wF4NG** maintained a **GitHub** account. On their profile, only one repository appeared: **"red-team-infra."** The name alone suggested offensive security tooling, exactly the kind of infrastructure a hacking group might use.
+Sure enough, a search revealed that **sh4d0wF4NG** maintained [a **GitHub** account](https://github.com/sh4d0wf4ng). On their profile, only one repository appeared: **"red-team-infra."** The name alone suggested offensive security tooling, exactly the kind of infrastructure a hacking group might use.
 
 ![image.png](/image-20.png)
 
