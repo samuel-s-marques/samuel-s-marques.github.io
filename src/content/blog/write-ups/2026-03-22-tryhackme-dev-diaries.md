@@ -15,9 +15,11 @@ description: The TryHackMe "Dev Diaries" challenge is an OSINT and code
   forensics exercise where participants trace a developer’s digital footprint
   across different platforms.
 ---
-## [Write-up: TryHackMe - Dev Diaries](https://tryhackme.com/room/devdiaries)
+## Write-up: TryHackMe - Dev Diaries
 
 One of the most fascinating aspects of OSINT and security research is how much information can be uncovered simply by following digital breadcrumbs.
+
+The **[TryHackMe "Dev Diaries" challenge](https://tryhackme.com/room/devdiaries)** is an OSINT and code forensics exercise where participants trace a developer’s digital footprint across different platforms.
 
 ### Mapping the Domain
 
