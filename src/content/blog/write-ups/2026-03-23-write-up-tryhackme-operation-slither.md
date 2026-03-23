@@ -69,15 +69,15 @@ THM{sl1th3ry_tw33tz_4nd_l34ky_r3pl13s!}
 
 ### Spotting the Sidekick
 
-Back in Task 1, we already encountered a mysterious figure, the one who sent that encoded message to **v3n0mbyt3_**. Their handle? ***myst1cv1x3n***. This was our prime suspect for the role of sidekick.
+Back in Task 1, we already encountered a mysterious figure, the one who sent that encoded message to **v3n0mbyt3_**. Their handle? ***[myst1cv1x3n](https://www.threads.com/@_myst1cv1x3n_)***. This was our prime suspect for the role of sidekick.
 
-We began by searching for ***myst1cv1x3n*** across social media platforms. Soon enough, their Instagram account surfaced. Most of the posts were ordinary, but one stood out: a link to their **SoundCloud** profile.
+We began by searching for ***myst1cv1x3n*** across social media platforms. Soon enough, [their Instagram account](https://www.instagram.com/_myst1cv1x3n_) surfaced. Most of the posts were ordinary, but one stood out: [a link to their **SoundCloud** profile](https://soundcloud.com/v1x3n-195859753).
 
 ![image.png](/image-14.png)
 
 ### The Accidental Leak
 
-On SoundCloud, we discovered something unexpected. Among the tracks, there was an audio file where ***myst1cv1x3n*** casually talked about their operation. But the real treasure wasn’t in the audio itself; it was hidden in the description.
+On SoundCloud, we discovered something unexpected. Among the tracks, there was [an audio file](https://soundcloud.com/v1x3n-195859753/prototype2) where ***myst1cv1x3n*** casually talked about their operation. But the real treasure was hidden in the description.
 
 ```
 VEhNe3MwY20xbnRfMDBwczNjX2Yxbmczcl9tMXNjbDFja30=
