@@ -18,6 +18,14 @@ description: "Open-source intelligence (OSINT) challenges are a fantastic way to
 ---
 Open-source intelligence (OSINT) challenges are a fantastic way to sharpen investigative skills. The **[OhSINT room on TryHackMe](https://tryhackme.com/room/ohsint)** is a classic example: starting with a single image, we unravel a trail of digital breadcrumbs across platforms. Let’s dive into the process step by step.
 
+
+| Tool | Purpose |
+| ------------------------------------------------------- | -------------------------------- |
+| [EXIF.tools](https://exif.tools/) | Extracting usernames from a file |
+| [WiGLE](https://wigle.net/) | Finding the location by a BSSID |
+| [Instant Username Search](https://instantusername.com/) | Finding the user's social media |
+
+
 ### The Image
 
 The challenge begins with an image file. At first glance, it looks ordinary, just the Windows XP wallpaper, but metadata often hides secrets.
