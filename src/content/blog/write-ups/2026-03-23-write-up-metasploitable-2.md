@@ -9,6 +9,8 @@ featured: true
 draft: true
 tags:
   - exploit
+  - ctf
+  - vulnerable vm
 description: Exploiting Metasploitable 2. Metasploitable 2 is a deliberately
   vulnerable virtual machine designed for practicing penetration testing. It
   contains outdated software and misconfigurations that make it ideal for
