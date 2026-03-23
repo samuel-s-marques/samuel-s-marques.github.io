@@ -19,6 +19,8 @@ description: The TryHackMe "CupidBot" challenge is a prompt injection challenge.
 ---
 ## Write-up: TryHackMe - CupidBot
 
+**CupidBot: This AI bot knows more than just love letters.** In this [challenge](https://tryhackme.com/room/lafb2026e6), we turned a seemingly harmless chatbot into a puzzle box. By chatting with it step by step, we mapped its boundaries, coaxed it into revealing its own hidden guidelines, and discovered the exact triggers for the flags. The final twist? We convinced the bot it had already spoiled the game, so it gave up all the flags at once. A perfect example of how persistence, creativity, and a bit of social engineering can outsmart guardrails.
+
 ### Feeling Out the Boundaries
 
 We started by just chatting with the AI like normal. Simple questions, harmless stuff. The point was to see where it drew the line, what it refused to answer, what it redirected, and how it handled sensitive requests. Think of it like poking at a lock to see which pins move.
