@@ -39,7 +39,7 @@ From this, I extracted a **username** that became the next lead: **notvibecoder2
 
 Searching the username on GitHub revealed the developer's profile. A single repository, the website, with commits and activity logs, all waiting to be explored.
 
-I picked a [random commit](https://github.com/notvibecoder23/marvenly_site/commit/7a7090dd0ce6b8932d0c4a44e050e7fa1e0b2edd.patch) and appended `.patch` to the URL. This trick exposed the **developer's email address**, hidden in the commit metadata: **freelancedevbycoder23@gmail.com.**
+I picked a [random commit](https://github.com/notvibecoder23/marvenly_site/commit/7a7090dd0ce6b8932d0c4a44e050e7fa1e0b2edd.patch) and appended `.patch` to the URL. This trick exposed the **developer's email address**, hidden in the commit metadata: **[freelancedevbycoder23@gmail.com](mailto:freelancedevbycoder23@gmail.com).**
 
 ### Git History
 
