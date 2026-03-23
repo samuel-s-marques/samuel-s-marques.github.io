@@ -11,8 +11,8 @@ tags:
   - osint
   - bellingcat
   - easy
-description: The Bellingcat "Fresh Faced" challenge was to locate Eliot Higgins
-  in a YouTube video from his early days, before Bellingcat became widely known.
+description: The Bellingcat "Training Time" challenge was to locate the room
+  where Christiaan Triebert hosted a Bellingcat workshop in 2017.
 ---
 Following the creation of **Bellingcat** in 2014, the organization’s early years were dedicated not only to publishing groundbreaking investigations but also to running training sessions around the world. These workshops helped journalists, researchers, and activists learn how to harness open-source intelligence (OSINT) techniques in their own work.
 
