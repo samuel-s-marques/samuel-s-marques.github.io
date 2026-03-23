@@ -2,7 +2,7 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "TryHackMe: Operation Slither"
+title: "Write-up: TryHackMe - Operation Slither"
 ogImage: "Write-up: TryHackMe - Operation Slither"
 slug: operation-slither
 featured: false
@@ -15,6 +15,13 @@ description: The TryHackMe "Operation Slither" challenge is an OSINT challenge,
   where we need to find the people behind an attack.
 ---
 [Operation Slither](https://tryhackme.com/room/operationslitherIU) is a challenge that tests your ability to pivot across platforms, analyze social media clues, and decode hidden messages. The mission: track down the operators of the **Sneaky Viper** group and recover their leaked flags.
+
+
+| Tool | Purpose |
+| -------------------------------------------------------------- | ------------------------------------------------- |
+| [CyberChef](https://gchq.github.io/CyberChef/) | To decode the Base64 strings |
+| [Hash Identifier](https://hashes.com/en/tools/hash_identifier) | To identify what type of encoding the strings had |
+
 
 ## The Leader
 
