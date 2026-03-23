@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: TryHackMe - Operation Slither
-ogImage: TryHackMe - Operation Slither
+title: "TryHackMe: Operation Slither"
+ogImage: "TryHackMe: Operation Slither"
 slug: operation-slither
 featured: false
 draft: false
