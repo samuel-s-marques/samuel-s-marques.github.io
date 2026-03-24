@@ -6,11 +6,12 @@ title: "Write-up: Metasploitable 2"
 ogImage: "Write-up: Metasploitable 2"
 slug: metasploitable-2
 featured: true
-draft: true
+draft: false
 tags:
   - exploit
   - ctf
   - vulnerable vm
+  - easy
 description: Exploiting Metasploitable 2. Metasploitable 2 is a deliberately
   vulnerable virtual machine designed for practicing penetration testing. It
   contains outdated software and misconfigurations that make it ideal for
