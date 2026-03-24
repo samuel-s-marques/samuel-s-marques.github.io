@@ -24,11 +24,13 @@ This write-up will walk through the process of exploiting Metasploitable 2, focu
 
 
 | Tool | Purpose |
-| ----------------------------------------- | ------------------------------------------------- |
+| ----------------------------------------- | ---------------------------------------------------------------------- |
 | Nmap | Scanning open ports and services |
 | Searchsploit | Searching for exploits for given services |
 | [MD5 Decrypt](https://md5decrypt.net/en/) | Decrypting MD5 hashes from DWVA users table |
 | SSH | Tunneling for remote access for post-exploitation |
+| John the Ripper | Decrypting `/etc/passwd` and `/etc/shadow` credentials |
+| Unshadower | Combining `/etc/passwd` and `/etc/shadow` credentials in a single file |
 
 
 ## Environment and Goal
