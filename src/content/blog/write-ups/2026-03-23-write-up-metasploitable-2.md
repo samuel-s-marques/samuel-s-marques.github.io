@@ -92,11 +92,40 @@ searchsploit vsftpd 2.3.4
 
 ![](</Captura de tela 2026-03-23 182724.png>)
 
-The results indicated a **Backdoor Command Execution** vulnerability. Researching the exploit (CVE-2011-2523) revealed that this specific version of the source code was compromised at the distribution level. When a username ending in a smiley face `:)` is sent to the server, it triggers a listener on port **6200**, granting a root shell without requiring a valid password.
-
-&nbsp;
+The results indicated a **Backdoor Command Execution** vulnerability. Researching the exploit ([CVE-2011-2523](https://nvd.nist.gov/vuln/detail/CVE-2011-2523)) revealed that this specific version of the source code was compromised at the distribution level. When a username ending in a smiley face `:)` is sent to the server, it triggers a listener on port **6200**, granting a root shell without requiring a valid password.
 
 ## Exploitation
+
+Instead of using automated frameworks, a standalone exploit script was sourced from **Exploit-DB** ([EDB-ID: 49757](https://www.exploit-db.com/exploits/49757)). This Python-based script automates the two-stage process of triggering the backdoor and immediately connecting to the resulting shell.
+
+The script was downloaded and executed against the target IP. Unlike manual telnet sessions, the script handles the timing of the "smiley face" trigger precisely.
+
+```
+python 17491.py 10.6.6.11
+```
+
+The script performs the following network operations:
+
+1. Establishes a TCP connection to **Port 21**
+2. Sends the string `USER nergal:)` (the trigger)
+3. Sends a dummy password `PASS pass`
+4. Immediately attempts to open a socket on **Port 6200**
+
+### Traffic Analysis
+
+By monitoring the attack with **Wireshark**, the script's behavior was verified in real-time. The capture shows the "Three-Way Handshake" (SYN, SYN-ACK, ACK) occurring on port 6200 only *after* the FTP authentication attempt with the smiley face trigger was sent on port 21.
+
+![](/image-33.png)
+
+### Shell Stabilization
+
+Upon successful execution, the script provided a basic root shell. To improve the environment for post-exploitation (allowing for command history and tab completion), the shell was stabilized using the Python PTY module, based on [Upgrading Simple Shells to Fully Interactive TTYs - ropnop blog](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/):
+
+```
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+![](</Captura de tela 2026-03-23 214803.png>)
 
 ## Post-Exploitation and Persistence
 
