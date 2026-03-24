@@ -161,9 +161,7 @@ $ echo "support:password" | chpasswd
 $ chmod u+s /bin/bash
 ```
 
-```
-
-```
+![Captura de tela 2026-03-23 193553.png](</Captura de tela 2026-03-23 193553.png>)
 
 ### Database Exfiltration (DVWA)
 
