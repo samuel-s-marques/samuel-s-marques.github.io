@@ -208,8 +208,16 @@ The SSH tunnel allowed for a remote dump of the `dvwa.users` table, revealing MD
 
 ![Captura de tela 2026-03-23 202018.png](</Captura de tela 2026-03-23 202018.png>)
 
-## Lessons Learned
+## Lessons Learned and Conclusion
 
-We identified a critical backdoor in the VSFTP service (CVE-2011-2523) that allowed for **unauthenticated root access**. Using this access, we bypassed local-only database restrictions via SSH tunneling and successfully exfiltrated the entire customer database. Furthermore, we established a persistent administrative backdoor that would survive a service restart.
+The exploitation of Metasploitable 2 provided a comprehensive look at the full lifecycle of a cyberattack. Beyond the initial "entry point", this engagement highlighted several critical security principles.
+
+"Root" is rarely the end of an attack. By creating a secondary administrative user and injecting a public SSH Key, we established persistence. This proved that an attacker can maintain control even if the original VSFTPD vulnerability is patched or the service is restarted. Furthermore, we used SSH Tunneling**** to bypass "local-only" database restrictions, proving that internal network blocks are easily circumvented once an OS-level foothold is established.
+
+We identified a critical backdoor in the VSFTP service (CVE-2011-2523) that allowed for unauthenticated root access. Using this access, we bypassed local-only database restrictions via SSH tunneling and successfully exfiltrated the entire customer database. Furthermore, we established a persistent administrative backdoor that would survive a service restart.
+
+### Remediation
+
+To secure this system, the `vsftpd` service must be updated immediately to a verified, modern version, and all legacy "r-services" should be disabled. Password hygiene is also vital; even if the application is patched, the system remains at risk if service accounts like `postgres` or `service` retain weak, crackable credentials.
 
 &nbsp;
