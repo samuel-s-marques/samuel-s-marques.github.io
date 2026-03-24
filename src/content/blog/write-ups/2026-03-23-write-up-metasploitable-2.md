@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "Write-up: Metasploitable 2"
-ogImage: "Write-up: Metasploitable 2"
+title: "Write-up: Metasploitable 2 | VSFTPD "
+ogImage: "Write-up: Metasploitable 2 | VSFTPD "
 slug: metasploitable-2
 featured: true
 draft: false
@@ -21,14 +21,14 @@ description: Exploiting Metasploitable 2. Metasploitable 2 is a deliberately
 
 In fact, my school specifically recommended that we use Metasploitable 2 as part of our training for the first month. By working with this environment, we can gain hands-on experience in identifying vulnerabilities, exploiting them, and reflecting on the defensive measures that would prevent such attacks in practice.
 
-This write-up will walk through the process of exploiting Metasploitable 2, focusing on common attack vectors such as weak credentials, misconfigured services, and outdated applications. The objective is not only to demonstrate exploitation techniques but also to highlight the importance of secure configurations, timely patching, and proactive defense strategies. By dissecting these vulnerabilities step by step, we gain valuable insight into how attackers think and operate; knowledge that is essential for building stronger, more resilient systems.
+**Objective:** While Metasploitable 2 contains dozens of vulnerabilities, this write-up focuses exclusively on the exploitation of the **VSFTPD 2.3.4** service. The goal is to demonstrate how a single compromised software version can lead to full system takeover, data exfiltration, and persistent administrative access. By dissecting this specific vector, we gain valuable insight into how attackers pivot from a service exploit to deep-system compromise.
 
 
 | Tool | Purpose |
 | ----------------------------------------- | ---------------------------------------------------------------------- |
 | Nmap | Scanning open ports and services |
 | Searchsploit | Searching for exploits for given services |
-| [MD5 Decrypt](https://md5decrypt.net/en/) | Decrypting MD5 hashes from DWVA users table |
+| [MD5 Decrypt](https://md5decrypt.net/en/) | Decrypting MD5 hashes from the DWVA users table |
 | SSH | Tunneling for remote access for post-exploitation |
 | John the Ripper | Decrypting `/etc/passwd` and `/etc/shadow` credentials |
 | Unshadow | Combining `/etc/passwd` and `/etc/shadow` credentials in a single file |
@@ -189,7 +189,7 @@ Since the database was restricted to `localhost`, an **SSH Tunnel** was establis
 ssh -L 3307:127.0.0.1:3306 support@10.6.6.11 -oHostKeyAlgorithms=+ssh-rsa
 ```
 
-The command **-oHostKeyAlgorithms=+ssh-rsa** was made necessary, because Metasploitable 2 is so old that modern Kali versions consider its SSH keys "insecure" and refuse to connect by default.
+The command **-oHostKeyAlgorithms=+ssh-rsa** was made necessary because Metasploitable 2 is so old that modern Kali versions consider its SSH keys "insecure" and refuse to connect by default.
 
 The SSH tunnel allowed for a remote dump of the `dvwa.users` table, revealing MD5-hashed passwords for web application users, which were subsequently decrypted to gain full administrative access to the web portal.
 
@@ -213,7 +213,7 @@ The SSH tunnel allowed for a remote dump of the `dvwa.users` table, revealing MD
 
 The exploitation of Metasploitable 2 provided a comprehensive look at the full lifecycle of a cyberattack. Beyond the initial "entry point", this engagement highlighted several critical security principles.
 
-"Root" is rarely the end of an attack. By creating a secondary administrative user and injecting a public SSH Key, we established persistence. This proved that an attacker can maintain control even if the original VSFTPD vulnerability is patched or the service is restarted. Furthermore, we used SSH Tunneling**** to bypass "local-only" database restrictions, proving that internal network blocks are easily circumvented once an OS-level foothold is established.
+"Root" is rarely the end of an attack. By creating a secondary administrative user and injecting a public SSH Key, we established persistence. This proved that an attacker can maintain control even if the original VSFTPD vulnerability is patched or the service is restarted. Furthermore, we used SSH Tunneling to bypass "local-only" database restrictions, proving that internal network blocks are easily circumvented once an OS-level foothold is established.
 
 We identified a critical backdoor in the VSFTP service (CVE-2011-2523) that allowed for unauthenticated root access. Using this access, we bypassed local-only database restrictions via SSH tunneling and successfully exfiltrated the entire customer database. Furthermore, we established a persistent administrative backdoor that would survive a service restart.
 
