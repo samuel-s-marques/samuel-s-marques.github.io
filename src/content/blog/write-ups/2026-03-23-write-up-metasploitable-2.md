@@ -24,12 +24,14 @@ This write-up will walk through the process of exploiting Metasploitable 2, focu
 
 
 | Tool | Purpose |
-| ------ | ------- |
-| Nmap |  |
+| ------------ | -------------------------------- |
+| Nmap | Scanning open ports and services |
+| Searchsploit |  |
+|  |  |
 |  |  |
 
 
-### Environment and Goal
+## Environment and Goal
 
 To ensure a realistic and controlled penetration testing scenario, the lab was deployed as a cyber range with multiple network segments and a firewall separating the attacker and target machines. This design simulates enterprise environments where internal systems are isolated and protected by perimeter defenses.
 
@@ -41,5 +43,29 @@ To ensure a realistic and controlled penetration testing scenario, the lab was d
   - Distribution: Metasploitable 2 (Ubuntu-based vulnerable VM)
   - IP Address: `10.6.6.11`
   - Purpose: An intentionally vulnerable system designed for practicing exploitation techniques.
+
+## Reconnaissance
+
+The first step in any engagement is to map the attack surface. Using **Nmap**, a comprehensive service scan was performed to identify open ports, versions, and potential vulnerabilities.
+
+```
+nmap -sC -sV -T4 -oA initial_scan 10.6.6.11
+```
+
+&nbsp;
+
+## Exploitation
+
+## Post-Exploitation and Persistence
+
+### Persistence via SSH
+
+In a real engagement, if the admin restarts the VSFTP service, we lose our shell. We need to stay in. So, to ensure access would survive a service restart, a new administrative user named `support` was created. A public RSA key was then injected into `/home/support/.ssh/authorized_keys`.
+
+```
+$ useradd -m -s /bin/bash support
+$ echo "support:password" | chpasswd
+$ chmod u+s /bin/bash
+```
 
 &nbsp;
