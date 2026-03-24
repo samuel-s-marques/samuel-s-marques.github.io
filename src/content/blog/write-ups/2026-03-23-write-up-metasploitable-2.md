@@ -13,10 +13,10 @@ tags:
   - vulnerable vm
   - easy
   - backdoor
-description: Exploiting Metasploitable 2. Metasploitable 2 is a deliberately
-  vulnerable virtual machine designed for practicing penetration testing. It
-  contains outdated software and misconfigurations that make it ideal for
-  learning exploitation techniques.
+description: Exploiting a vulnerable VSFTPD version on Metasploitable 2.
+  Metasploitable 2 is a deliberately vulnerable virtual machine designed for
+  practicing penetration testing. It contains outdated software and
+  misconfigurations that make it ideal for learning exploitation techniques.
 ---
 [Metasploitable 2](https://sourceforge.net/projects/metasploitable/) is a deliberately vulnerable virtual machine developed by Rapid7 to serve as a safe environment for practicing penetration testing and ethical hacking techniques. Unlike production systems, it is intentionally misconfigured and filled with outdated software, insecure services, and exploitable flaws. This makes it an ideal platform for students and professionals to understand how real-world attacks unfold without the risk of harming live systems.
 
