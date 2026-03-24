@@ -190,4 +190,26 @@ ssh -L 3307:127.0.0.1:3306 support@10.6.6.11 -oHostKeyAlgorithms=+ssh-rsa
 
 The command **-oHostKeyAlgorithms=+ssh-rsa** was made necessary, because Metasploitable 2 is so old that modern Kali versions consider its SSH keys "insecure" and refuse to connect by default.
 
+The SSH tunnel allowed for a remote dump of the `dvwa.users` table, revealing MD5-hashed passwords for web application users, which were subsequently decrypted to gain full administrative access to the web portal.
+
+![Captura de tela 2026-03-23 201408.png](</Captura de tela 2026-03-23 201408.png>)
+
+![Captura de tela 2026-03-23 201954.png](</Captura de tela 2026-03-23 201954.png>)
+
+
+| Username | Password |
+| -------- | -------- |
+| admin | password |
+| gordonb | abc123 |
+| 1337 | charley |
+| pablo | letmein |
+| smithy | password |
+
+
+![Captura de tela 2026-03-23 202018.png](</Captura de tela 2026-03-23 202018.png>)
+
+## Lessons Learned
+
+We identified a critical backdoor in the VSFTP service (CVE-2011-2523) that allowed for **unauthenticated root access**. Using this access, we bypassed local-only database restrictions via SSH tunneling and successfully exfiltrated the entire customer database. Furthermore, we established a persistent administrative backdoor that would survive a service restart.
+
 &nbsp;
