@@ -12,6 +12,7 @@ tags:
   - ctf
   - vulnerable vm
   - easy
+  - backdoor
 description: Exploiting Metasploitable 2. Metasploitable 2 is a deliberately
   vulnerable virtual machine designed for practicing penetration testing. It
   contains outdated software and misconfigurations that make it ideal for
