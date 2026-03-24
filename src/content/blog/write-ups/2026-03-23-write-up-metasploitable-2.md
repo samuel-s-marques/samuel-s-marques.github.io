@@ -4,7 +4,7 @@ pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
 title: "Write-up: Metasploitable 2 | VSFTPD "
 ogImage: "Write-up: Metasploitable 2 | VSFTPD "
-slug: metasploitable-2
+slug: metasploitable-2-vsftpd
 featured: true
 draft: false
 tags:
