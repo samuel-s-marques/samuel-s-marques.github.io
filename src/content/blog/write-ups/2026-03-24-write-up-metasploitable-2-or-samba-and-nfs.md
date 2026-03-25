@@ -18,11 +18,11 @@ description: Exploiting a vulnerable Samba service on Metasploitable 2.
   practicing penetration testing. It contains outdated software and
   misconfigurations that make it ideal for learning exploitation techniques.
 ---
-Check the previous Metasploitable 2 write-up here, covering VSFTPD exploitation: [Write-up: Metasploitable 2 | VSFTPD | Samuel M..](https://www.samuelmarques.dev/posts/metasploitable-2-vsftpd/)
+Check out the previous Metasploitable 2 write-up here, covering VSFTPD exploitation: [Write-up: Metasploitable 2 | VSFTPD | Samuel M.](https://www.samuelmarques.dev/posts/metasploitable-2-vsftpd/)
 
 [Metasploitable 2](https://sourceforge.net/projects/metasploitable/) is a deliberately vulnerable virtual machine developed by Rapid7 to serve as a safe environment for practicing penetration testing and ethical hacking techniques. Unlike production systems, it is intentionally misconfigured and filled with outdated software, insecure services, and exploitable flaws. This makes it an ideal platform for students and professionals to understand how real-world attacks unfold without the risk of harming live systems.
 
-**Objective:** While Metasploitable 2 contains dozens of vulnerabilities, this write-up focuses exclusively on the exploitation of the **Samba** service. The goal is to demonstrate how a series of minor infrastructure misconfigurations, specifically in the **Samba** service and **Linux filesystem permissions**, can be chained together to achieve full root access. Unlike the previous VSFTPD exploit which relied on a software backdoor, this attack exploits "logical" flaws and insecure administrative choices.
+**Objective:** While Metasploitable 2 contains dozens of vulnerabilities, this write-up focuses exclusively on the exploitation of the **Samba** service. The goal is to demonstrate how a series of minor infrastructure misconfigurations, specifically in the **Samba** service and **Linux filesystem permissions**, can be chained together to achieve full root access. Unlike the previous VSFTPD exploit, which relied on a software backdoor, this attack exploits "logical" flaws and insecure administrative choices.
 
 
 | Tool | Purpose |
@@ -160,7 +160,7 @@ Since the symlink allowed me to browse `/etc/cron.hourly`, my plan was simple: u
 
 However, I hit a hard wall. While the Samba exploit let me *see* the entire hard drive, it didn't magically grant me root permissions. The OS was still enforcing its own rules. The `/etc/` directory is owned by `root`, and my Samba session (running as a lower-privileged user) didn't have "Write" permissions.
 
-Every attempt to `put` a script into a cron folder resulted in a frustrating `NT_STATUS_ACCESS_DENIED`.
+Every attempt to `put` a script in a cron folder resulted in a frustrating `NT_STATUS_ACCESS_DENIED`.
 
 ### The Pivot
 
@@ -175,7 +175,7 @@ smb: \> put reverse_shell.php
 
 ![](</Captura de tela 2026-03-24 224641.png>)
 
-As you can see, I also tried to write on other directories inside `/var/www`. No success.
+As you can see, I also tried to write in other directories inside `/var/www`. No success.
 
 By triggering `shell.php` via a browser, we received a connection back to our Kali machine, granting us a shell as the **www-data** user.
 
