@@ -145,7 +145,7 @@ While highly effective, relying on a "one-shot" RCE doesn't provide the same lev
 
 Using the Metasploit framework's `linux/samba/symlink_traversal` module, we established a symbolic link named `rootfs` within the `/tmp` share.
 
-This effectively turned the `/tmp` share into a door for the entire hard drive. While we could now read sensitive files like `/etc/passwd`, the underlying **POSIX permissions** still prevented us from writing directly to protected system directories like `/etc/cron.hourly`.
+This effectively turned the `/tmp` share into a door for the entire hard drive. While we could now read sensitive files like `/etc/passwd`, the underlying **POSIX permissions** still prevented us from writing directly to protected system directories like `/etc/cron.hourly`, or anything in `/etc`.
 
 ### A "Dead End"
 
@@ -210,6 +210,6 @@ The exploitation of Metasploitable 2 via Samba demonstrates that **Infrastructur
 
 ### Remediation
 
-To secure this system, the administrator would need to disable symlink following in `smb.conf` by adding `wide links = no` and `follow symlinks = no`. They would need to audit SUID binaries and remove the bit from any application that allows shell escapes (e.g., [at | GTFOBins](https://gtfobins.org/gtfobins/at/)).
+To secure this system, the administrator would need to disable symlink following by setting `wide links = no` in the `[global]` section of `smbd.conf`. They would need to audit SUID binaries and remove the bit from any application that allows shell escapes (e.g., [at | GTFOBins](https://gtfobins.org/gtfobins/at/)).
 
 &nbsp;
