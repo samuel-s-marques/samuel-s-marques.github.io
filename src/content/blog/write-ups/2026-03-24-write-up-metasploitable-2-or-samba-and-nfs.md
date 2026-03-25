@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-24
 modDatetime: 2026-03-24
-title: "Write-up: Metasploitable 2 | Samba & NFS"
-ogImage: "Write-up: Metasploitable 2 | Samba & NFS"
+title: "Write-up: Metasploitable 2 | Samba"
+ogImage: "Write-up: Metasploitable 2 | Samba"
 slug: metasploitable-2-samba
 featured: false
 draft: true
