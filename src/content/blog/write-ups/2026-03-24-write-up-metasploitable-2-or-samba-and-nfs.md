@@ -165,7 +165,7 @@ Every attempt to `put` a script into a cron folder resulted in a frustrating `NT
 
 This failure was a crucial lesson. I had to stop looking for "system" vulnerabilities and start looking for "application" vulnerabilities. I realized that if I couldn't write to the **Operating System** folders, I should check the **Web Server** folders.
 
-Web servers often have much looser permissions to allow for file uploads or CMS updates. By shifting my focus from `/etc` to `/var/www`, I found the writable `/dav` directory. This pivot is what eventually led to my initial foothold as `www-data`. It wasn't the "root shell" I wanted immediately, but it was the "reverse shell" I needed to start exploring the system from the inside.
+Web servers often have much looser permissions to allow for file uploads or CMS updates. By shifting my focus from `/etc` to `/var/www`, I found the writable `/dav` directory. This pivot is what eventually led to my initial foothold as `www-data`. It wasn't the "root shell" I wanted immediately, but it was the "reverse shell" I needed to start exploring the system from the inside. The PHP reverse shell was obtained from [Kali webshells directory](https://www.kali.org/tools/webshells/).
 
 ```
 smb: \> cd rootfs/var/www/dav
