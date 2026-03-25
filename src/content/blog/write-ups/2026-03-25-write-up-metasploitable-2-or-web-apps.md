@@ -159,7 +159,7 @@ Add lessons learned
 
 Add remediation
 
-Check the Metasploitable 2 write-up series:
+Check out the Metasploitable 2 write-up series:
 
 - [Write-up: Metasploitable 2 | VSFTPD | Samuel M.](https://www.samuelmarques.dev/posts/metasploitable-2-vsftpd/)
 - [Write-up: Metasploitable 2 | Samba | Samuel M.](https://samuelmarques.dev/posts/metasploitable-2-samba/)
