@@ -235,4 +235,8 @@ To mitigate the specific risks identified in this attack chain, the following de
 - **Database Security:** Assign a complex password to the MySQL `root` user. Even though the database is "local-only", the lack of a password allowed for trivial data theft once the OS was breached.
 - **Integrity Monitoring:** Deploy File Integrity Monitoring (FIM) tools like **AIDE** or **Tripwire** to alert administrators when critical system binaries or configuration files are modified.
 
+Check the Metasploitable 2 write-up series:
+
+- [Write-up: Metasploitable 2 | Samba | Samuel M.](https://samuelmarques.dev/posts/metasploitable-2-samba/)
+
 &nbsp;
