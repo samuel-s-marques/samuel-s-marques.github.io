@@ -104,7 +104,7 @@ Host script results:
 |_  System time: 2026-03-24T20:18:38-04:00
 ```
 
-Using enumeration tools, we identified that the `/tmp` share was configured with **Anonymous READ/WRITE** access. This "open window" served as our entry point into the system's internal architecture.
+Using enumeration tools, like smbmap, we identified that the `/tmp` share was configured with **Anonymous READ/WRITE** access. This "open window" served as our entry point into the system's internal architecture.
 
 ```
 [+] IP: 10.6.6.13:445   Name: 10.6.6.13           Status: Authenticated
