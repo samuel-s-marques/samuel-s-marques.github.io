@@ -213,7 +213,7 @@ The exploitation of Metasploitable 2 via Samba demonstrates that **Infrastructur
 
 To secure this system, the administrator would need to disable symlink following by setting `wide links = no` in the `[global]` section of `smbd.conf`. They would need to audit SUID binaries and remove the bit from any application that allows shell escapes (e.g., [at | GTFOBins](https://gtfobins.org/gtfobins/at/)).
 
-Once again, these are the previous articles on Metasploitable 2:
+Check Metasploitable 2 series:
 
 - [Write-up: Metasploitable 2 | VSFTPD | Samuel M.](https://www.samuelmarques.dev/posts/metasploitable-2-vsftpd/)
 
