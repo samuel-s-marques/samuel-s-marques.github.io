@@ -118,7 +118,81 @@ Inside, we find a message from **Miles Dyson** in `attention.txt` mentioning a s
 
 ![Captura de tela 2026-04-04 234425.png](</Captura de tela 2026-04-04 234425.png>)
 
+## Infiltration
+
+By using the wordlist found in the SMB share (`log1.txt`) and running a brute-force attack with **Hydra** against the SquirrelMail login page, we successfully cracked the account.
+
+![Captura de tela 2026-04-04 162920.png](</Captura de tela 2026-04-04 162920.png>)
+
+- **Username:** `milesdyson`
+- **Password:** `cyborg007haloterminator`
+
+![Captura de tela 2026-04-04 162710.png](</Captura de tela 2026-04-04 162710.png>)
+
+![Captura de tela 2026-04-04 162717.png](</Captura de tela 2026-04-04 162717.png>)
+
+Once inside Miles' email, we found a password for his personal SMB share. After logging into that share, we found a file that pointed us to a new, secret directory on the web server:
+
+- **Hidden Directory:** `/45kra24zxs28d3u` (This directory leads to a CMS called Cuppa).
+
 ## Exploitation
 
+Inside the hidden directory, we discovered the **Cuppa CMS**. This software is vulnerable to a specific type of attack that allows an attacker to force the server to load a file from an external source.
+
+![Captura de tela 2026-04-04 163204.png](</Captura de tela 2026-04-04 163204.png>)
+
+This vulnerability is known as **Remote File Inclusion (RFI)**. By exploiting this, we were able to point the CMS to a PHP reverse shell hosted on our attacking machine, giving us our first foothold on the system as the user `www-data`.
+
+![Captura de tela 2026-04-04 170410.png](</Captura de tela 2026-04-04 170410-1.png>)
+
 ## Post-Exploitation
+
+Once we executed the **Remote File Inclusion (RFI)** vulnerability in the Cuppa CMS, we landed a shell as the service user `www-data`.
+
+Even though we were a low-privilege service account, the permissions on the system were surprisingly permissive. We navigated to the `/home` directory and found that we could read the contents of Miles' home folder directly.
+
+- **User Flag:** `7ce5c2109a40f958099283600a9ae807`
+
+### Backup Oversight
+
+While poking around `/home/milesdyson`, we discovered a folder named `backups`. Inside, there was a compressed file (`backup.tgz`) and a script named `backup.sh`.
+
+The script was simple:
+
+```
+#!/bin/bash
+cd /var/www/html
+tar cf /home/milesdyson/backups/backup.tgz *
+```
+
+This looked like a scheduled task. To confirm, we checked the system's **Cronjobs** (scheduled tasks) and found that this script was being executed by **root** every single minute:
+
+```
+*/1 * * * * root /home/milesdyson/backups/backup.sh
+```
+
+### Exploiting the Wildcard
+
+The use of the asterisk (`*`) in the `tar` command is a classic security flaw known as **Wildcard Injection**.
+
+Because `tar` expands the `*` to include every filename in the directory, we can create files that `tar` will mistake for command-line arguments. By doing this, we can force the system, running as root, to execute a script of our choice.
+
+We wrote a small script to give the `/bin/bash` binary SUID permissions:
+
+```
+echo 'chmod +s /bin/bash' > /var/www/html/shell.sh
+```
+
+We then created two empty files in `/var/www/html` that act as the "flags" for the `tar` command.
+
+```
+touch /var/www/html/--checkpoint=1
+touch /var/www/html/--checkpoint-action=exec=sh\ shell.sh
+```
+
+After waiting sixty seconds for the cronjob to trigger, we ran `/bin/bash -p`. Just like that, we had a root shell.
+
+With our new powers, we marched straight into the root directory to claim the final prize.
+
+- **Root Flag:** `3f0372db24753accc7179a282cd6a949`
 
