@@ -217,3 +217,10 @@ After waiting sixty seconds for the cronjob to trigger, we ran `/bin/bash -p`. J
 
 - **Root Flag:** `3f0372db24753accc7179a282cd6a949`
 
+### References
+
+To pull off the **Wildcard Injection** and the **Remote File Inclusion (RFI)**, I relied on several key resources from the security community. If you want to understand the deep mechanics of how Unix wildcards can be "weaponized", I highly recommend these:
+
+- [Back To The Future: Unix Wildcards Gone Wild](https://www.exploit-db.com/papers/33930): A great breakdown of how different binaries (like `tar`, `chown`, and `rsync`) react to injected flags
+- [Cuppa CMS - Local/Remote File Inclusion](https://www.exploit-db.com/exploits/25971): Documentation of the specific vulnerability used to gain the initial `www-data` foothold
+
