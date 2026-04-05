@@ -15,6 +15,10 @@ tags:
   - smb
 description: "Skynet: A Terminator-themed Linux machine."
 ---
+[Skynet](https://tryhackme.com/room/skynet) is a beginner-to-intermediate CTF that blends enumeration, web exploitation, brute force, and privilege escalation. The goal is to recover `user.txt` and `root.txt` flags.
+
+> **Note:** You may notice IP addresses shifting throughout this walkthrough (e.g., `10.66.145.158` to `10.66.174.94`). This is due to a machine restart during the operation.
+
 
 | Tool | Purpose |
 | ------ | ---------------------------------------------- |
@@ -22,11 +26,23 @@ description: "Skynet: A Terminator-themed Linux machine."
 | hydra | Bruteforcing `/squirrelmail` auth panel |
 | ffuf | Fuzzing directories |
 | Netcat | Catching the reverse shell from the web server |
+| SMBMap | Mapping SMB share disks |
 
+
+## Environment and Goal
+
+We are operating within a controlled lab environment provided by **TryHackMe**. To access the target, we establish a **Private VPN Tunnel** using OpenVPN, which places our attacking machine (Kali Linux) on the same virtual network as the target.
+
+- Attacker Machine:
+  - Distribution: Kali Linux 2026.1
+  - Purpose: Used as the penetration testing platform, equipped with tools such as Nmap, Metasploit Framework, and other utilities for reconnaissance and exploitation.
+- Target Machine:
+  - Distribution: Skynet (Ubuntu-based vulnerable VM)
+  - Purpose: Capture the flags (keys) by exploiting weaknesses in the system
 
 ## Reconnaisance
 
-Our goal is to find a way in. We start with **Nmap** to see which services Skynet is running.
+Every successful infiltration begins with seeing what's behind the curtain. Our first move is a comprehensive **Nmap** scan to identify the attack surface.
 
 ```
 nmap -sC -sV -T4 10.66.145.158
@@ -75,6 +91,14 @@ index.html      [Status: 200]
 
 ### SMB
 
+While SquirrelMail is tempting, we lack credentials. Let's pivot to the Samba shares to see if Skynet left any digital breadcrumbs.
+
+Using `smbmap`, we look for accessible shares:
+
+```
+smbmap -H 10.66.145.158
+```
+
 ```
 Disk              Permissions     Comment
 ----              -----------     -------
@@ -84,7 +108,11 @@ milesdyson        NO ACCESS       Miles Dyson Personal Share
 IPC$              NO ACCESS       IPC Service (skynet server (Samba, Ubuntu))
 ```
 
+We hit paydirt: an **anonymous** share with read-only permissions. We connect without a password.
+
 ![Captura de tela 2026-04-04 234250.png](</Captura de tela 2026-04-04 234250.png>)
+
+Inside, we find a message from **Miles Dyson** in `attention.txt` mentioning a system-wide password reset, along with a directory of log files. After downloading and inspecting `log1.txt`, we find what looks like a wordlist of potential passwords.
 
 ![Captura de tela 2026-04-04 234425.png](</Captura de tela 2026-04-04 234425.png>)
 
