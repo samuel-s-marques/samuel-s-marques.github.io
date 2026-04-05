@@ -5,8 +5,8 @@ modDatetime: 2026-04-05
 title: "Write-up: TryHackMe - Skynet"
 ogImage: "Write-up: TryHackMe - Skynet"
 slug: skynet
-featured: false
-draft: true
+featured: true
+draft: false
 tags:
   - exploit
   - tryhackme
