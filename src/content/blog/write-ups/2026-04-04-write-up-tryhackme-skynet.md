@@ -26,6 +26,12 @@ description: "Skynet: A Terminator-themed Linux machine."
 
 ## Reconnaisance
 
+Our goal is to find a way in. We start with **Nmap** to see which services Skynet is running.
+
+```
+nmap -sC -sV -T4 10.66.145.158
+```
+
 ```
 PORT    STATE SERVICE     VERSION
 22/tcp  open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
@@ -45,7 +51,16 @@ PORT    STATE SERVICE     VERSION
 Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
+The scan reveals 6 different ports:
+
+- **22 (SSH)**: Remote administration
+- **80 (HTTP)**: A web server
+- **110/143 (POP3/IMAP)**: Email services
+- **139/445 (SMB)**: Samba file-sharing (important)
+
 ### Directory Fuzzing
+
+Navigating to the IP in a browser shows a Skynet search engine. It looks innocent, but a directory brute-force attack using `ffuf` reveals a hidden directory: `/squirrelmail`.
 
 ```
 admin           [Status: 301]
@@ -55,6 +70,8 @@ js              [Status: 301]
 squirrelmail    [Status: 301]
 index.html      [Status: 200]
 ```
+
+![Captura de tela 2026-04-04 233855.png](</Captura de tela 2026-04-04 233855.png>)
 
 ### SMB
 
