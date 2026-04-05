@@ -5,7 +5,7 @@ modDatetime: 2026-03-23
 title: "Write-up: Metasploitable 2 | VSFTPD "
 ogImage: "Write-up: Metasploitable 2 | VSFTPD "
 slug: metasploitable-2-vsftpd
-featured: true
+featured: false
 draft: false
 tags:
   - exploit
@@ -239,4 +239,3 @@ Check the Metasploitable 2 write-up series:
 
 - [Write-up: Metasploitable 2 | Samba | Samuel M.](https://samuelmarques.dev/posts/metasploitable-2-samba/)
 
-&nbsp;
