@@ -76,6 +76,8 @@ The scan reveals 6 different ports:
 
 ### Directory Fuzzing
 
+![image.png](/image-35.png)
+
 Navigating to the IP in a browser shows a Skynet search engine. It looks innocent, but a directory brute-force attack using `ffuf` reveals a hidden directory: `/squirrelmail`.
 
 ```
