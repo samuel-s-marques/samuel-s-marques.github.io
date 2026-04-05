@@ -173,9 +173,22 @@ This looked like a scheduled task. To confirm, we checked the system's **Cronjob
 
 ### Exploiting the Wildcard
 
-The use of the asterisk (`*`) in the `tar` command is a classic security flaw known as **Wildcard Injection**.
+The turning point in this operation was discovering a backup script running as **root**. The script used a common but dangerous shortcut: the asterisk (`*`) wildcard. `tar cf backup.tgz *`
 
-Because `tar` expands the `*` to include every filename in the directory, we can create files that `tar` will mistake for command-line arguments. By doing this, we can force the system, running as root, to execute a script of our choice.
+**What is the problem with** `tar`?
+
+The issue isn't exactly with `tar` itself, but with how the Linux shell handles wildcards. When you type `*`, the shell expands it into a list of every file in the directory *before* the command even runs.
+
+If we check the manual page (`man tar`), we find two very "helpful" options for an attacker:
+
+- `--checkpoint[=NUMBER]`: Displays progress messages every Nth record
+- `--checkpoint-action=ACTION`: Executes a specific **ACTION** (like a shell command) when a checkpoint is reached
+
+By creating files with names that match these flags, we can trick `tar` into treating our filenames as instructions.
+
+
+
+**The Execution**
 
 We wrote a small script to give the `/bin/bash` binary SUID permissions:
 
@@ -190,9 +203,17 @@ touch /var/www/html/--checkpoint=1
 touch /var/www/html/--checkpoint-action=exec=sh\ shell.sh
 ```
 
-After waiting sixty seconds for the cronjob to trigger, we ran `/bin/bash -p`. Just like that, we had a root shell.
 
-With our new powers, we marched straight into the root directory to claim the final prize.
+
+**The Result**
+
+When the cronjob triggered, the shell expanded the command to look like this: `tar cf backup.tgz --checkpoint=1 --checkpoint-action=exec=sh shell.sh`
+
+Because `tar` was running as **root**, it reached the checkpoint, saw our "action" file, and executed `shell.sh` with full administrative privileges.
+
+![Captura de tela 2026-04-04 180709.png](</Captura de tela 2026-04-04 180709.png>)
+
+After waiting sixty seconds for the cronjob to trigger, we ran `/bin/bash -p`. Just like that, we had a root shell. With our new powers, we marched straight into the root directory to claim the final prize.
 
 - **Root Flag:** `3f0372db24753accc7179a282cd6a949`
 
