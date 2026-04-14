@@ -15,8 +15,7 @@ tags:
 description: Extract insight from a set of flagged artefacts, and distil the
   information into usable threat intelligence.
 ---
-[https://tryhackme.com/room/invite-only](https://tryhackme.com/room/invite-only)
-Extract insight from a set of flagged artefacts, and distil the information into usable threat intelligence.
+[Invite Only](https://tryhackme.com/room/invite-only) is a beginner challenge for SOC analysts. Extract insight from a set of flagged artefacts, and distil the information into usable threat intelligence.
 
 Challenge description:
 
