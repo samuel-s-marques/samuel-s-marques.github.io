@@ -62,7 +62,7 @@ The goal was not just to identify these indicators, but to follow the entire thr
 Our first target was the flagged file hash: `5d0509f68a9b7c415a726be75a078180e3f02e59866f193b0a99eee8e39c874f`. A hash is like a unique digital fingerprint for a file, and by checking it against threat intelligence databases, we learned exactly what we were dealing with.
 
 **1. What is the name of the file identified with the flagged SHA256 hash?**
-The file was named `**syshelpers.exe**`. This immediately gave us a profile for the suspicious code.
+The file was named `syshelpers.exe`. This immediately gave us a profile for the suspicious code.
 
 ![Screenshot of VirusTotal community score, hash, and filename: "syshelpers.exe"](</Captura de tela 2026-04-14 170048.png>)
 
@@ -74,19 +74,19 @@ Based on our analysis of its details, we confirmed that it was a **Win32 EXE** f
 Next, we investigated how this piece of code was executed and what other malicious files it left behind.
 
 **3. What are the execution parents of the flagged hash? List the names chronologically.**  
-We found two potential execution parents that led to `syshelpers.exe`: `**361GJX7J**` and `**installer.exe**`. Understanding these parent processes is crucial because it helps us trace the initial infection vector (the 'how').
+We found two potential execution parents that led to `syshelpers.exe`: `361GJX7J` and `installer.exe`. Understanding these parent processes is crucial because it helps us trace the initial infection vector (the 'how').
 
 Furthermore, we tracked down which file was initially dropped during this process.
 
 **4. What is the name of the file being dropped?**  
-The first payload drop we observed was named `**AClient.exe**`.
+The first payload drop we observed was named `AClient.exe`.
 
 Our most valuable forensic step was to trace the chain of execution from `installer.exe`. We found that this process dropped multiple follow-up malicious files, which are critical for understanding the full scope of the attack.
 
 ![Screenshot of TryDetectThis2.0 (VirusTotal Offline), showing execution parents and dropped files.](</Captura de tela 2026-04-14 170614.png>)
 
 **5. Research the second hash in question 3 and list the four malicious dropped files.**  
-From the parent `installer.exe`, we identified a cluster of four additional suspicious drops: `**searchHost.exe**`, `**syshelpers.exe**`, `**nat1.vbs**`, and `**runsys.vbs**`. This tells us that this wasn't just a single-stage attack; it was a multi-faceted payload delivery system.
+From the parent `installer.exe`, we identified a cluster of four additional suspicious drops: `searchHost.exe`, `syshelpers.exe`, `nat1.vbs`, and `runsys.vbs`. This tells us that this wasn't just a single-stage attack; it was a multi-faceted payload delivery system.
 
 ![Screenshot of TryDetectThis2.0 (VirusTotal Offline), showing dropped files by installer.exe](</Captura de tela 2026-04-14 170841.png>)
 
@@ -94,7 +94,7 @@ From the parent `installer.exe`, we identified a cluster of four additional susp
 
 ## Phase II: IP Analysis and Malware Identification
 
-Moving on to the flagged Indicator of Compromise (IoC): the IP address `**101[.]99[.]76[.]120**`. While an IP can be spoofed or used for many things, linking it to known malicious activity is key.
+Moving on to the flagged Indicator of Compromise (IoC): the IP address `101[.]99[.]76[.]120`. While an IP can be spoofed or used for many things, linking it to known malicious activity is key.
 
 **6. Analyse the files related to the flagged IP. What is the malware family that links these files?**  
 When we ran the IP through our threat intelligence tools, the results were unambiguous. This specific IP address was strongly linked to the **AsyncRAT** malware family. AsyncRAT is a notorious remote access trojan (RAT) often used by cybercriminals for persistence and command-and-control (C2) activities.
