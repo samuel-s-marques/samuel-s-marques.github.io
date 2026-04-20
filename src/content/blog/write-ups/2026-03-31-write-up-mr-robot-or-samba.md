@@ -2,10 +2,10 @@
 author: Samuel Marques
 pubDatetime: 2026-03-31
 modDatetime: 2026-03-31
-title: "Write-up: TryHackMe - Mr. Robot"
-ogImage: "Write-up: TryHackMe - Mr. Robot"
+title: "Write-up: Mr. Robot - TryHackMe"
+ogImage: "Write-up: Mr. Robot - TryHackMe"
 slug: mr-robot
-featured: true
+featured: false
 draft: false
 tags:
   - exploit
