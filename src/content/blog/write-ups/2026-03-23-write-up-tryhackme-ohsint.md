@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "Write-up: TryHackMe - OhSINT"
-ogImage: "Write-up: TryHackMe - OhSINT"
+title: "Write-up: OhSINT - TryHackMe"
+ogImage: "Write-up: OhSINT - TryHackMe"
 slug: ohsint
 featured: false
 draft: false
@@ -68,4 +68,3 @@ Following the blog link, we uncover more personal details: that the user is in *
 
 ![image.png](/image-32.png)
 
-&nbsp;
