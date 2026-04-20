@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-22
 modDatetime: 2026-03-22
-title: "Write-up: TryHackMe - Missing Person"
-ogImage: "Write-up: TryHackMe - Missing Person"
+title: "Write-up: Missing Person - TryHackMe"
+ogImage: "Write-up: Missing Person - TryHackMe"
 slug: missing-person
 featured: false
 draft: false
