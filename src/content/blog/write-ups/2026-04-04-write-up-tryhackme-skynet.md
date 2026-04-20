@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-04-05
 modDatetime: 2026-04-05
-title: "Write-up: TryHackMe - Skynet"
-ogImage: "Write-up: TryHackMe - Skynet"
+title: "Write-up: Skynet - TryHackMe"
+ogImage: "Write-up: Skynet - TryHackMe"
 slug: skynet
 featured: true
 draft: false
