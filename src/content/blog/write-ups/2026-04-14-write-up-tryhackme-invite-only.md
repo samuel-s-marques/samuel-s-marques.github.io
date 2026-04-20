@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-04-14
 modDatetime: 2026-04-14
-title: "Write-up: TryHackMe - Invite Only"
-ogImage: "Write-up: TryHackMe - Invite Only"
+title: "Write-up: Invite Only - TryHackMe"
+ogImage: "Write-up: Invite Only - TryHackMe"
 slug: invite-only
 featured: false
 draft: false
