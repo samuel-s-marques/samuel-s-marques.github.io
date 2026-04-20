@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "Write-up: Bellingcat - Training Time"
-ogImage: "Write-up: Bellingcat - Training Time"
+title: "Write-up: Training Time - Bellingcat"
+ogImage: "Write-up: Training Time - Bellingcat"
 slug: training-time
 featured: false
 draft: false
@@ -44,4 +44,3 @@ By expanding the search to other rooms in the same venue, we stumbled upon photo
 
 ![](/challenge-belling-cat-01.png)
 
-&nbsp;
