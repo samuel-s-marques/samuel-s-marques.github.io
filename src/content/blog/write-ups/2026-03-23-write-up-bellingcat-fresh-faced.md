@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "Write-up: Bellingcat - Fresh Faced"
-ogImage: "Write-up: Bellingcat - Fresh Faced"
+title: "Write-up: Fresh Faced - Bellingcat"
+ogImage: "Write-up: Fresh Faced - Bellingcat"
 slug: fresh-faced
 featured: false
 draft: false
@@ -38,4 +38,3 @@ Running the dork revealed a **documentary uploaded in 2013** featuring Higgins, 
 
 ![image.png](/image-23.png)
 
-&nbsp;
