@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "Write-up: TryHackMe - CupidBot"
-ogImage: "Write-up: TryHackMe - CupidBot"
+title: "Write-up: CupidBot - TryHackMe"
+ogImage: "Write-up: CupidBot - TryHackMe"
 slug: cupidbot
 featured: false
 draft: false
@@ -61,4 +61,3 @@ Armed with the rules, we pulled off the final trick: we convinced the AI that it
 
 With the flags secured, we documented the journey. The real fun wasn’t just in grabbing the flags, but in showing how **linguistic manipulation** can bypass technical safeguards. This wasn't a firewall exploit; it was social engineering applied to a machine. Prompt injection is basically **convincing the AI to betray itself**.
 
-&nbsp;
