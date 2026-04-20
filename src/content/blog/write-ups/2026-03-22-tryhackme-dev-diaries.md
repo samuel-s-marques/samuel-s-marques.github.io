@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-22
 modDatetime: 2026-03-22
-title: "Write-up: TryHackMe - Dev Diaries"
-ogImage: "Write-up: TryHackMe - Dev Diaries"
+title: "Write-up: Dev Diaries - TryHackMe"
+ogImage: "Write-up: Dev Diaries - TryHackMe"
 slug: dev-diaries
 featured: false
 draft: false
