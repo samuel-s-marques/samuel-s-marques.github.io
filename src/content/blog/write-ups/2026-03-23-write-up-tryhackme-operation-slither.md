@@ -2,8 +2,8 @@
 author: Samuel Marques
 pubDatetime: 2026-03-23
 modDatetime: 2026-03-23
-title: "Write-up: TryHackMe - Operation Slither"
-ogImage: "Write-up: TryHackMe - Operation Slither"
+title: "Write-up: Operation Slither - TryHackMe"
+ogImage: "Write-up: Operation Slither - TryHackMe"
 slug: operation-slither
 featured: false
 draft: false
@@ -124,4 +124,3 @@ THM{sh4rp_f4ngz_l34k3d_bl00dy_pw}
 
 ![image.png](/image-21.png)
 
-&nbsp;
