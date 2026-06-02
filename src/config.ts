@@ -37,6 +37,18 @@ export const SOCIALS: SocialObjects = [
     active: true,
   },
   {
+    name: "TryHackMe",
+    href: "https://tryhackme.com/p/spicerunner",
+    linkTitle: `${SITE.title} on TryHackMe`,
+    active: true,
+  },
+  {
+    name: "HackTheBox",
+    href: "https://app.hackthebox.com/users/3342336",
+    linkTitle: `${SITE.title} on TryHackMe`,
+    active: true,
+  },
+  {
     name: "Mail",
     href: "mailto:contact@samuelmarques.dev",
     linkTitle: `Send an email to ${SITE.title}`,
