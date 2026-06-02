@@ -44,7 +44,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "HackTheBox",
-    href: "https://app.hackthebox.com/users/3342336",
+    href: "https://app.hackthebox.com/public/users/3342336",
     linkTitle: `${SITE.title} on TryHackMe`,
     active: true,
   },
