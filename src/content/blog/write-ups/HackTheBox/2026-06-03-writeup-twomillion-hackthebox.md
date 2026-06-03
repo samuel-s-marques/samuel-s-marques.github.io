@@ -12,7 +12,9 @@ tags:
   - ctf
   - easy
   - hackthebox
-description: Our company may have been compromised, we need your help ASAP.
+description: TwoMillion is an Easy difficulty Linux box that was released to
+  celebrate reaching 2 million users on HackTheBox. The box features an old
+  version of the HackTheBox platform that includes the old hackable invite code.
 ---
 [HackTheBox's TwoMillion](https://app.hackthebox.com/machines/TwoMillion) is an Easy difficulty Linux box that was released to celebrate reaching 2 million users on HackTheBox.
 
