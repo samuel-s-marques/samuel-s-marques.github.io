@@ -6,7 +6,7 @@ title: "Writeup: TwoMillion - HackTheBox"
 ogImage: "Writeup: TwoMillion - HackTheBox"
 slug: twomillion
 featured: true
-draft: true
+draft: false
 tags:
   - exploit
   - ctf
