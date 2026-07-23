@@ -39,7 +39,7 @@ This post addresses the setup of the lab environment and the tools required for 
 
 # Step-by-Step Setup
 
-Please, be aware that we will not address how to set up the lab environment in this post. It is assumed that the reader has an Android device or an Android Virtual Device (AVD) available and has a basic understanding of how to use these tools.
+We will not cover how to set up the lab environment in this post. It is assumed that the reader has an Android device or an Android Virtual Device (AVD) available and has a basic understanding of how to use these tools.
 
 ## Step A: Target Installation & Connectivity
 
