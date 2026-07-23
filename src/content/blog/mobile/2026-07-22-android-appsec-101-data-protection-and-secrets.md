@@ -14,8 +14,6 @@ description: This post is Part 1 of the Android AppSec 101 Series, where we
   analyze real-world mobile vulnerabilities, inspect source code, and implement
   secure fixes using the Allsafe laboratory target.
 ---
-# Android AppSec 101 - Data Protection & Secrets
-
 This post is **Part 1** of the **Android AppSec 101 Series**, where we analyze real-world mobile vulnerabilities, inspect source code, and implement secure fixes using the [Allsafe](https://github.com/t0thkr1s/allsafe-android) laboratory target.
 
 - [**Part 0: Introduction**](https://samuelmarques.dev/posts/android-appsec-101-part-0/)
