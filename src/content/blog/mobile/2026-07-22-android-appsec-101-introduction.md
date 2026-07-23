@@ -9,6 +9,7 @@ featured: false
 draft: true
 tags:
   - mobile
+  - android
 ---
 This post is **Part 0** of the **Android AppSec 101 Series**, where we analyze real-world mobile vulnerabilities, inspect source code, and implement secure fixes using the [Allsafe](https://github.com/t0thkr1s/allsafe-android) laboratory target.
 
