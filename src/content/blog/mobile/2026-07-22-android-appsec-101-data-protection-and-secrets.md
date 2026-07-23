@@ -7,6 +7,9 @@ ogImage: Android AppSec 101 - Data Protection & Secrets
 slug: android-appsec-101-part-1
 featured: false
 draft: false
+tags:
+  - mobile
+  - android
 description: This post is Part 1 of the Android AppSec 101 Series, where we
   analyze real-world mobile vulnerabilities, inspect source code, and implement
   secure fixes using the Allsafe laboratory target.
@@ -15,12 +18,12 @@ description: This post is Part 1 of the Android AppSec 101 Series, where we
 
 This post is **Part 1** of the **Android AppSec 101 Series**, where we analyze real-world mobile vulnerabilities, inspect source code, and implement secure fixes using the [Allsafe](https://github.com/t0thkr1s/allsafe-android) laboratory target.
 
-- [**Part 0: Introduction**](https://samuelmarques.dev/posts/android-appsec-101-part-0/)
-- **Part 1: Data Protection & Secrets** _(You are here)_
-- [**Part 2: Android Component & IPC Security**](https://samuelmarques.dev/posts/android-appsec-101-part-2/)
-- [**Part 3: Injections & Code Execution**](https://samuelmarques.dev/posts/android-appsec-101-part-3/)
-- [**Part 4: Client-Side Bypasses**](https://samuelmarques.dev/posts/android-appsec-101-part-4/)
-- [**Part 5: RE & Binary Patching**](https://samuelmarques.dev/posts/android-appsec-101-part-5/)
+- **[Part 0: Introduction](https://samuelmarques.dev/posts/android-appsec-101-part-0/)**
+- **Part 1: Data Protection & Secrets** *(You are here)*
+- **[Part 2: Android Component & IPC Security](https://samuelmarques.dev/posts/android-appsec-101-part-2/)**
+- **[Part 3: Injections & Code Execution](https://samuelmarques.dev/posts/android-appsec-101-part-3/)**
+- **[Part 4: Client-Side Bypasses](https://samuelmarques.dev/posts/android-appsec-101-part-4/)**
+- **[Part 5: RE & Binary Patching](https://samuelmarques.dev/posts/android-appsec-101-part-5/)**
 
 ## Executive Summary
 
@@ -57,6 +60,7 @@ adb shell ps | grep "ALLSAFE"
 ```
 
 Output:
+
 ```
 USER           PID  PPID     VSZ    RSS WCHAN            ADDR S NAME
 u0_a184       4700   319 13821972 135664 0                  0 S infosecadventures.allsafe
@@ -171,6 +175,7 @@ There are some ways we can fix this code. The point is that if you are developin
 To remediate insecure logging vulnerabilities, developers should simply avoid logging sensitive information to the system logs in production environments. We can do that by preventing logging at all costs (removing all log calls in release mode), use a logging framework ([Timber](https://github.com/jakewharton/timber) in Java, [Logger](https://pub.dev/packages/logger) in Flutter) that supports conditional logging, or setting R8 proguard rules to remove all log levels except warning and error.
 
 #### 1. Primary Remediation: Remove or Redact Sensitive Logs
+
 The most direct fix is to remove any log call that outputs sensitive user inputs, credentials, or PII. If operational logging is necessary during development, ensure the output is redacted or masked:
 
 ```java
@@ -185,6 +190,7 @@ if (BuildConfig.DEBUG) {
 ```
 
 #### 2. Build-Time Protection: Strip Logs with R8 / ProGuard
+
 To prevent developer oversight when debug logs are left in code, configure R8 / ProGuard (`proguard-rules.pro`) to automatically remove `Log` class methods from the final release APK:
 
 ```proguard
@@ -197,6 +203,7 @@ To prevent developer oversight when debug logs are left in code, configure R8 / 
 ```
 
 #### 3. Best Practice: Production-Aware Logging Frameworks (Timber)
+
 Instead of calling `android.util.Log` directly, use a framework like [Timber](https://github.com/JakeWharton/timber). Timber separates logging logic from behavior by allowing you to plant log trees dynamically:
 
 ```java
@@ -210,6 +217,7 @@ Timber.d("Processing input..."); // Silently dropped in release builds
 ```
 
 #### 4. verification & Testing (OWASP MASTG)
+
 To verify that logging controls are functioning correctly in production release builds, cross-reference the following test cases:
 
 - [MASTG-TEST-0231: References to Logging APIs - OWASP](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0231/)
@@ -220,6 +228,7 @@ To verify that logging controls are functioning correctly in production release 
 If secrets, access tokens, session identifiers, or personally identifiable information are written to logs, they may become accessible to developers, attackers with debugging access, rooted devices, OEM diagnostic software, or crash reporting services. This can lead to credential disclosure, account compromise, or privacy violations.
 
 Documented cases of log-based incidents:
+
 - [Leaked OAuth response code in logs in Coinbase - hackerone](https://hackerone.com/reports/5314)
 - [Logged plaintext passwords in EquityPandit - SentinelOne](https://www.sentinelone.com/vulnerability-database/cve-2019-25605/)
 
@@ -512,6 +521,7 @@ One of the most common misconceptions in mobile development is that APK files ar
 Hardcoded credentials should be considered compromised the moment an application is distributed. Unlike server-side secrets, client-side secrets cannot be revoked simply by hiding the source code, since every user receives a complete copy of the APK.
 
 Depending on the credential, an attacker may be able to:
+
 - Authenticate as privileged users.
 - Access internal APIs or development environments.
 - Extract additional sensitive information from backend services.
@@ -540,3 +550,4 @@ There are some documented cases of hardcoded credentials in real-world applicati
 - [CWE-798: Use of Hard-coded Credentials - CWE](https://cwe.mitre.org/data/definitions/798.html)
 - [Twilio Credentials Hardcoded in Mobile Apps Expose Calls, Texts - Eduard Kovacs, SecurityWeek](https://www.securityweek.com/twilio-credentials-hardcoded-mobile-apps-expose-calls-texts/)
 - [Many Mobile Apps Unnecessarily Leak Hardcoded Keys: Analysis - Ionut Arghire, SecurityWeek](https://www.securityweek.com/many-mobile-apps-unnecessarily-leak-hardcoded-keys-analysis/)
+
