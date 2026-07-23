@@ -6,7 +6,7 @@ title: Android AppSec 101 - Introduction
 ogImage: Android AppSec 101 - Introduction
 slug: android-appsec-101-part-0
 featured: false
-draft: true
+draft: false
 tags:
   - mobile
   - android
