@@ -5,8 +5,8 @@ modDatetime: 2026-07-22
 title: Android AppSec 101 - Introduction
 ogImage: Android AppSec 101 - Introduction
 slug: android-appsec-101-part-0
-featured: false
-draft: true
+featured: true
+draft: false
 tags:
   - mobile
   - android
@@ -157,7 +157,7 @@ Manual CA certificate installation (as shown in Step C) can be tedious, especial
 - With your AVD or rooted device connected via ADB, select **Android Device via ADB** inside HTTP Toolkit.
 - The tool automatically injects HTTP proxy settings, provisions a temporary system CA certificate, sets up a local VPN interface, and hooks application processes without requiring manual Wi-Fi configuration.
 
-[screenshot of http toolkit setup]
+![image.png](/image-37.png)
 
 ### 2. Wireshark & `androiddump` (Low-Level Network & Logcat Capture)
 
@@ -171,7 +171,7 @@ Burp Suite is optimized for web traffic, making it less suitable for non-HTTP/HT
   - **Android tcpdump**: Captures raw packet traffic from the device's network interfaces.
 3. Start the capture to correlate system events and network traffic on a single timeline.
 
-[screenshot of wireshark androiddump capture]
+![image.png](/image-38.png)
 
 # References & Additional Resources
 
