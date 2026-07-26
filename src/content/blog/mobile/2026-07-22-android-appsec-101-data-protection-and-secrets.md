@@ -18,12 +18,12 @@ description: This post is Part 1 of the Android AppSec 101 Series, where we
 
 This post is **Part 1** of the **Android AppSec 101 Series**, where we analyze real-world mobile vulnerabilities, inspect source code, and implement secure fixes using the [Allsafe](https://github.com/t0thkr1s/allsafe-android) laboratory target.
 
-- [**Part 0: Introduction**](https://samuelmarques.dev/posts/android-appsec-101-part-0/)
-- **Part 1: Data Protection & Secrets** _(You are here)_
-- [**Part 2: Android Component & IPC Security**](https://samuelmarques.dev/posts/android-appsec-101-part-2/)
-- [**Part 3: Injections & Code Execution**](https://samuelmarques.dev/posts/android-appsec-101-part-3/)
-- [**Part 4: Client-Side Bypasses**](https://samuelmarques.dev/posts/android-appsec-101-part-4/)
-- [**Part 5: RE & Binary Patching**](https://samuelmarques.dev/posts/android-appsec-101-part-5/)
+- **[Part 0: Introduction](https://samuelmarques.dev/posts/android-appsec-101-part-0/)**
+- **Part 1: Data Protection & Secrets** *(You are here)*
+- **[Part 2: Android Component & IPC Security](https://samuelmarques.dev/posts/android-appsec-101-part-2/)**
+- **[Part 3: Injections & Code Execution](https://samuelmarques.dev/posts/android-appsec-101-part-3/)**
+- **[Part 4: Client-Side Bypasses](https://samuelmarques.dev/posts/android-appsec-101-part-4/)**
+- **[Part 5: RE & Binary Patching](https://samuelmarques.dev/posts/android-appsec-101-part-5/)**
 
 # Executive Summary
 
@@ -33,19 +33,19 @@ In **Part 1** of this series, we examine five fundamental data protection vulner
 
 ## Index
 
-* [Module 1: Insecure Logging](# Module 1: Insecure Logging)
-* [Module 2: Hardcoded Credentials](# Module 2: Hardcoded Credentials)
-* [Module 3: Insecure Firebase Configurations](# Module 3: Insecure Firebase Configurations)
-* [Module 4: Insecure Shared Preferences](# Module 4: Insecure Shared Preferences)
-* [References & Additional Resources](# References & Additional Resources)
+- [Module 1: Insecure Logging](# Module 1: Insecure Logging)
+- [Module 2: Hardcoded Credentials](# Module 2: Hardcoded Credentials)
+- [Module 3: Insecure Firebase Configurations](# Module 3: Insecure Firebase Configurations)
+- [Module 4: Insecure Shared Preferences](# Module 4: Insecure Shared Preferences)
+- [References & Additional Resources](# References & Additional Resources)
 
 # Module 1: Insecure Logging
 
 > **Quick Attack Preview**
 >
-> Enter `password123` in the challenge and press **Enter**. While monitoring `adb logcat --pid <PID> | grep ALLSAFE`, the secret immediately appears in plaintext. Let's reproduce the issue first, then investigate why it happens and how to fix it.
+> Enter `password` in the challenge and press **Enter**. While monitoring `adb logcat --pid <PID> | grep ALLSAFE`, the secret immediately appears in plaintext. Let's reproduce the issue first, then investigate why it happens and how to fix it.
 
-[screenshot of insecure logging page and logcat output]
+![Captura de tela 2026-07-22 181543.png](</Captura de tela 2026-07-22 181543.png>)
 
 During development, engineers use logging mechanisms to trace execution flow and debug errors. If these calls remain active in production release builds, any process or connected system with access to system logs (`logcat`) can read cleartext sensitive data.
 
@@ -53,7 +53,7 @@ Prior to Android 4.1 (API level 16), any privileged application with `READ_LOGS`
 
 In the OWASP Mobile Security framework, this weakness is formally categorized under **[MASWE-0001: Insertion of Sensitive Data into Logs](https://mas.owasp.org/MASWE-0001/)** (mapping to global **CWE-532**). It directly violates the **MASVS-STORAGE** security standard.
 
-[screenshot of insecure logging page]
+![image.png](/image-41.png)
 
 ## Dynamic Analysis
 
@@ -70,6 +70,7 @@ adb shell ps | grep "ALLSAFE"
 ```
 
 Output:
+
 ```
 USER           PID  PPID     VSZ    RSS WCHAN            ADDR S NAME
 u0_a184       4700   319 13821972 135664 0                  0 S infosecadventures.allsafe
@@ -189,6 +190,7 @@ There are some ways we can fix this code. The point is that if you are developin
 To remediate insecure logging vulnerabilities, developers should simply avoid logging sensitive information to the system logs in production environments. We can do that by preventing logging at all costs (removing all log calls in release mode), use a logging framework ([Timber](https://github.com/jakewharton/timber) in Java, [Logger](https://pub.dev/packages/logger) in Flutter) that supports conditional logging, or setting R8 proguard rules to remove all log levels except warning and error.
 
 ### 1. Primary Remediation: Remove or Redact Sensitive Logs
+
 The most direct fix is to remove any log call that outputs sensitive user inputs, credentials, or PII. If operational logging is necessary during development, ensure the output is redacted or masked:
 
 ```java
@@ -203,6 +205,7 @@ if (BuildConfig.DEBUG) {
 ```
 
 ### 2. Build-Time Protection: Strip Logs with R8 / ProGuard
+
 To prevent developer oversight when debug logs are left in code, configure R8 / ProGuard (`proguard-rules.pro`) to automatically remove `Log` class methods from the final release APK:
 
 ```proguard
@@ -215,6 +218,7 @@ To prevent developer oversight when debug logs are left in code, configure R8 / 
 ```
 
 ### 3. Best Practice: Production-Aware Logging Frameworks (Timber)
+
 Instead of calling `android.util.Log` directly, use a framework like [Timber](https://github.com/JakeWharton/timber). Timber separates logging logic from behavior by allowing you to plant log trees dynamically:
 
 ```java
@@ -228,6 +232,7 @@ Timber.d("Processing input..."); // Silently dropped in release builds
 ```
 
 ### 4. Verification & Testing (OWASP MASTG)
+
 To verify that logging controls are functioning correctly in production release builds, cross-reference the following test cases:
 
 - [MASTG-TEST-0231: References to Logging APIs - OWASP](https://mas.owasp.org/MASTG/tests/android/MASVS-STORAGE/MASTG-TEST-0231/)
@@ -238,6 +243,7 @@ To verify that logging controls are functioning correctly in production release 
 If secrets, access tokens, session identifiers, or personally identifiable information are written to logs, they may become accessible to developers, attackers with debugging access, rooted devices, OEM diagnostic software, or crash reporting services. This can lead to credential disclosure, account compromise, or privacy violations.
 
 Documented cases of log-based incidents:
+
 - [Leaked OAuth response code in logs in Coinbase - hackerone](https://hackerone.com/reports/5314)
 - [Logged plaintext passwords in EquityPandit - SentinelOne](https://www.sentinelone.com/vulnerability-database/cve-2019-25605/)
 
@@ -530,11 +536,13 @@ If an attacker extracts a token, a short lifespan limits the duration of potenti
 ### Store Configuration, Not Secrets
 
 It's perfectly acceptable for an APK to contain:
+
 - API endpoints
 - Feature flags
 - UI configuration
 
 It's **NOT** acceptable to include:
+
 - passwords
 - API secrets
 - signing keys
@@ -551,6 +559,7 @@ Before every release, search the APK for any hardcoded secrets. Search `strings.
 Hardcoded credentials should be considered compromised the moment an application is distributed. Unlike server-side secrets, client-side secrets cannot be revoked simply by hiding the source code, since every user receives a complete copy of the APK.
 
 Depending on the credential, an attacker may be able to:
+
 - Authenticate as privileged users.
 - Access internal APIs or development environments.
 - Extract additional sensitive information from backend services.
@@ -588,6 +597,7 @@ We first need to know if the application uses Firebase and what is the endpoint 
 **1. Selecting the Capture Interface**
 
 Before capturing traffic, ensure you select the correct network interface:
+
 - **Proxy Environment (Burp Suite):** If your emulator routes traffic through Burp Suite running locally on `127.0.0.1:8080`, select the **Adapter for loopback traffic capture** (or `lo` on Linux/macOS) in Wireshark to capture loopback traffic between the proxy and host.
 - **Direct ADB Capture:** If capturing directly from an emulator or physical device without a local proxy, select **Android tcpdump** via `androiddump`.
 
@@ -711,6 +721,7 @@ Extensive security research has demonstrated that misconfigured Firebase instanc
 A striking real-world example of this scale was uncovered in research published by [GitGuardian](https://blog.gitguardian.com/misconfigurations-in-google-firebase-lead-to-over-19-8-million-leaked-secrets/). Security researchers (`mrbruh`, `xyzeva`, and `logykk`) scanned over 5 million endpoints and identified 916 misconfigured Firebase instances. The open configurations publicly exposed over **19.8 million plaintext secrets** and **125 million sensitive user records** — including names, email addresses, phone numbers, and billing information with bank details.
 
 Documented research and references:
+
 - [Misconfigurations in Google Firebase Lead to Over 19.8 Million Leaked Secrets - Dwayne McDaniel, GitGuardian](https://blog.gitguardian.com/misconfigurations-in-google-firebase-lead-to-over-19-8-million-leaked-secrets/)
 - [Thousands of Android Apps Leak Data Due to Firebase Misconfigurations - Ionut Arghire, SecurityWeek](https://www.securityweek.com/thousands-android-apps-leak-data-due-firebase-misconfigurations/)
 - [OWASP Mobile Top 10 - M9: Insecure Data Storage](https://owasp.org/www-project-mobile-top-10/2023-risks/m9-insecure-data-storage.html)
@@ -746,6 +757,7 @@ cat user.xml
 ```
 
 Output
+
 ```xml
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <map>
@@ -935,12 +947,14 @@ When credentials or sensitive tokens are stored unencrypted in `SharedPreference
 Depending on what is stored, an attacker may recover authentication tokens, session identifiers, user credentials, or other sensitive information. Unlike network attacks, this disclosure does not require intercepting traffic, the information is already available locally in plaintext once filesystem access is obtained.
 
 Common scenarios where this vulnerability becomes critical include:
+
 - **Rooted/Jailbroken Devices**: Attackers with root access can browse the entire application sandbox, reading preference files directly.
 - **Physical Device Seizure**: Law enforcement or thieves can extract data from lost or stolen devices, even if the screen is locked (depending on the lock strength and OS version).
 - **Malware Infections**: Malicious applications with appropriate permissions can exfiltrate sensitive data stored in cleartext.
 - **Backup & Restore**: If app backups are enabled and not properly restricted, sensitive data can be exposed during backup operations or device migrations.
 
 Documented security references related to insecure local data storage:
+
 - [OWASP Mobile Top 10 - M9: Insecure Data Storage](https://owasp.org/www-project-mobile-top-10/2023-risks/m9-insecure-data-storage.html)
 - [MASWE-0006: Sensitive Data Stored Unencrypted in Private Storage Locations - OWASP](https://mas.owasp.org/MASWE/MASVS-STORAGE/MASWE-0006/)
 
@@ -969,3 +983,4 @@ Documented security references related to insecure local data storage:
 - [Androiddump Manual Page - Wireshark](https://www.wireshark.org/docs/man-pages/androiddump.html)
 - [Misconfigurations in Google Firebase Lead to Over 19.8 Million Leaked Secrets - Dwayne McDaniel, GitGuardian](https://blog.gitguardian.com/misconfigurations-in-google-firebase-lead-to-over-19-8-million-leaked-secrets/)
 - [Thousands of Android Apps Leak Data Due to Firebase Misconfigurations - Ionut Arghire, SecurityWeek](https://www.securityweek.com/thousands-android-apps-leak-data-due-firebase-misconfigurations/)
+
