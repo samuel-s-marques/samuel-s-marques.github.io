@@ -18,24 +18,25 @@ This post is **Part 0** of the **Android AppSec 101 Series**, where we analyze r
 
 This post addresses the setup of the lab environment and the tools required for the rest of the series. The following posts will address the vulnerabilities found in the target application, following the OWASP Mobile Security Testing Guide (MSTG) and Mobile Top 10 vulnerabilities.
 
-- **Part 0: Introduction** _(You are here)_
-- **Part 1: Data Protection & Secrets** _(Upcoming)_
-- **Part 2: Android Component & IPC Security** _(Upcoming)_
-- **Part 3: Injections & Code Execution** _(Upcoming)_
-- **Part 4: Client-Side Bypasses** _(Upcoming)_
-- **Part 5: RE & Binary Patching** _(Upcoming)_
+- **Part 0: Introduction**
+- [**Part 1: Data Protection & Secrets**](https://samuelmarques.dev/posts/android-appsec-101-part-1/)
+- [**Part 2: Android Component & IPC Security**](https://samuelmarques.dev/posts/android-appsec-101-part-2/)
+- [**Part 3: Injections & Code Execution**](https://samuelmarques.dev/posts/android-appsec-101-part-3/)
+- [**Part 4: Client-Side Bypasses**](https://samuelmarques.dev/posts/android-appsec-101-part-4/)
+- [**Part 5: RE & Binary Patching**](https://samuelmarques.dev/posts/android-appsec-101-part-5/)
 
 
 # Overview & Environment Setup
 
-| Category                | Tool                                                                             | Purpose                                                             |
-| ----------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Lab Environment         | Android Studio Emulator or Genymotion                                            | Running the target application (Android 10+ recommended)            |
-| Static Analysis         | [JADX-GUI](https://github.com/skylot/jadx)                                       | Decompiling DEX/APK to Java code                                    |
-| Static Analysis         | [Apktool](https://apktool.org/)                                                  | Unpacking, reading Smali bytecode, and repacking APKs               |
-| Dynamic Analysis        | [Android Debug Bridge (adb)](https://developer.android.com/tools/adb)            | Interacting with device shell, inspecting logs, and sending intents |
-| Traffic Interception    | [Burp Suite](https://portswigger.net/burp)                                       | Intercepting and analyzing HTTP/HTTPS requests                      |
-| Dynamic Instrumentation | [Frida](https://frida.re/) & [Objection](https://github.com/sensepost/objection) | Runtime hooking, bypasses, and native library analysis              |
+| Category                | Tool                                                                                | Purpose                                                             |
+| ----------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Lab Environment         | Android Studio Emulator or Genymotion                                               | Running the target application (Android 10+ recommended)            |
+| Static Analysis         | [JADX-GUI](https://github.com/skylot/jadx)                                          | Decompiling DEX/APK to Java code                                    |
+| Static Analysis         | [Apktool](https://apktool.org/)                                                     | Unpacking, reading Smali bytecode, and repacking APKs               |
+| Dynamic Analysis        | [Android Debug Bridge (adb)](https://developer.android.com/tools/adb)               | Interacting with device shell, inspecting logs, and sending intents |
+| Traffic Interception    | [Burp Suite](https://portswigger.net/burp)                                          | Intercepting and analyzing HTTP/HTTPS requests                      |
+| Traffic Analysis        | [Wireshark](https://www.wireshark.org/) or [HTTP Toolkit](https://httptoolkit.com/) | Capturing and analyzing network traffic                             |
+| Dynamic Instrumentation | [Frida](https://frida.re/) & [Objection](https://github.com/sensepost/objection)    | Runtime hooking, bypasses, and native library analysis              |
 
 # Step-by-Step Setup
 
@@ -142,9 +143,37 @@ Once installed, configure your emulator's Wi-Fi / Ethernet AP proxy settings to 
 
 After Android 14, the system started to use other methods to store CA certificates, which broke some of the previous methods. The articles in the references below show how to install CA certificates on Android 14 and newer versions.
 
-# References
+## Step D: Alternative Traffic & Log Analysis (HTTP Toolkit & Wireshark)
+
+While Burp Suite remains the primary tool for manual HTTP/HTTPS request interception and tampering, specialized tasks — such as handling strict certificate barriers on newer Android releases or capturing non-HTTP traffic — benefit from dedicated tools.
+
+### 1. HTTP Toolkit (Automated Interception)
+
+Manual CA certificate installation (as shown in Step C) can be tedious, especially on Android 14+ where system trust stores are protected. [HTTP Toolkit](https://httptoolkit.com/) simplifies this by automating the entire setup.
+
+- With your AVD or rooted device connected via ADB, select **Android Device via ADB** inside HTTP Toolkit.
+- The tool automatically injects HTTP proxy settings, provisions a temporary system CA certificate, sets up a local VPN interface, and hooks application processes without requiring manual Wi-Fi configuration.
+
+[screenshot of http toolkit setup]
+
+### 2. Wireshark & `androiddump` (Low-Level Network & Logcat Capture)
+
+Burp Suite is optimized for web traffic, making it less suitable for non-HTTP/HTTPS protocols (such as raw TCP/UDP sockets, MQTT, or custom binary streams) or system log monitoring. Wireshark addresses these gaps through its built-in extcap utility, **`androiddump`**.
+
+`androiddump` allows Wireshark to capture system logs (`logcat`) and network traffic directly from an Android device over ADB in real time:
+
+1. Connect your device via ADB (`adb devices`).
+2. Open Wireshark on your host machine. On the interface selection screen, locate the Android interfaces:
+   - **Android Logcat Main / System**: Streams system logs directly into Wireshark, allowing you to filter logs using display expressions like `logcat_text.tag contains "ALLSAFE"`.
+   - **Android tcpdump**: Captures raw packet traffic from the device's network interfaces.
+3. Start the capture to correlate system events and network traffic on a single timeline.
+
+[screenshot of wireshark androiddump capture]
+
+# References & Additional Resources
 
 * [Modern Android Penetration Testing Lab Environment - LRVT](https://blog.lrvt.de/android-penetration-testing-lab-environment/)
 * [Installing Burp Suite CA as a System Cert on Android - Redfox Cyber Security](https://www.redfoxsec.com/blog/installing-burp-suites-ca-as-a-system-certificate-on-android) - Alternative installation methods.
 * [Android 14 blocks modification of system certificates, even as root - Tim Perry](https://httptoolkit.com/blog/android-14-breaks-system-certificate-installation/)
 * [New ways to inject system CA certificates in Android 14 - Tim Perry](https://httptoolkit.com/blog/android-14-install-system-ca-certificate/)
+* [Androiddump Manual Page - Wireshark](https://www.wireshark.org/docs/man-pages/androiddump.html)
