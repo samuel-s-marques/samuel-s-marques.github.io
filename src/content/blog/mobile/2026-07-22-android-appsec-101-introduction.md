@@ -20,7 +20,7 @@ This post is **Part 0** of the **Android AppSec 101 Series**, where we analyze r
 
 This post addresses the setup of the lab environment and the tools required for the rest of the series. The following posts will address the vulnerabilities found in the target application, following the OWASP Mobile Security Testing Guide (MSTG) and Mobile Top 10 vulnerabilities.
 
-- **Part 0: Introduction**
+- **Part 0: Introduction** _(You are here)_
 - **[Part 1: Data Protection & Secrets](https://samuelmarques.dev/posts/android-appsec-101-part-1/)**
 - **[Part 2: Android Component & IPC Security](https://samuelmarques.dev/posts/android-appsec-101-part-2/)**
 - **[Part 3: Injections & Code Execution](https://samuelmarques.dev/posts/android-appsec-101-part-3/)**
@@ -182,4 +182,3 @@ Burp Suite is optimized for web traffic, making it less suitable for non-HTTP/HT
 - [Android 14 blocks modification of system certificates, even as root - Tim Perry](https://httptoolkit.com/blog/android-14-breaks-system-certificate-installation/)
 - [New ways to inject system CA certificates in Android 14 - Tim Perry](https://httptoolkit.com/blog/android-14-install-system-ca-certificate/)
 - [Androiddump Manual Page - Wireshark](https://www.wireshark.org/docs/man-pages/androiddump.html)
-
