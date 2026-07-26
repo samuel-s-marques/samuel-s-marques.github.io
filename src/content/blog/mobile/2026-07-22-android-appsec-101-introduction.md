@@ -16,6 +16,8 @@ description: This post is Part 0 of the Android AppSec 101 Series, where we
 ---
 This post is **Part 0** of the **Android AppSec 101 Series**, where we analyze real-world mobile vulnerabilities, inspect source code, and implement secure fixes using the [Allsafe](https://github.com/t0thkr1s/allsafe-android) laboratory target.
 
+![image.png](/image-39.png)
+
 This post addresses the setup of the lab environment and the tools required for the rest of the series. The following posts will address the vulnerabilities found in the target application, following the OWASP Mobile Security Testing Guide (MSTG) and Mobile Top 10 vulnerabilities.
 
 - **Part 0: Introduction**
