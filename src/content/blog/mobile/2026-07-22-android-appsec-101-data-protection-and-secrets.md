@@ -49,7 +49,7 @@ In **Part 1** of this series, we examine five fundamental data protection vulner
 
 During development, engineers use logging mechanisms to trace execution flow and debug errors. If these calls remain active in production release builds, any process or connected system with access to system logs (`logcat`) can read cleartext sensitive data.
 
-Prior to Android 4.1 (API level 16), any privileged application with `READ_LOGS` permission could inspect logs from every process. Modern Android versions restrict this access considerably, but logs remain visible through ADB during debugging, rooted devices, engineering builds, OEM debugging tools, crash-reporting frameworks, and developer oversight. Consequently, logging secrets is still considered an information disclosure vulnerability.
+Before Android 4.1 (API level 16), any privileged application with `READ_LOGS` permission could inspect logs from every process. Modern Android versions restrict this access considerably, but logs remain visible through ADB during debugging, rooted devices, engineering builds, OEM debugging tools, crash-reporting frameworks, and developer oversight. Consequently, logging secrets is still considered an information disclosure vulnerability.
 
 In the OWASP Mobile Security framework, this weakness is formally categorized under **[MASWE-0001: Insertion of Sensitive Data into Logs](https://mas.owasp.org/MASWE-0001/)** (mapping to global **CWE-532**). It directly violates the **MASVS-STORAGE** security standard.
 
