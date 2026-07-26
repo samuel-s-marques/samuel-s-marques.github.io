@@ -173,11 +173,11 @@ public class InsecureLogging extends Fragment {
 }
 ```
 
-In summary, if the user inputed something that is not empty into the secret text input field, and then pressed enter, the application will log the input to the system logs.
+In summary, if the user entered something that is not empty into the secret text input field, and then pressed Enter, the application will log the input to the system logs.
 
 ## Remediation & Code Fix
 
-There are some ways we can fix this code. The point is that if you are developing an mobile application, you should not be logging sensitive information to the system logs. It's a security risk and a bad practice.
+There are some ways we can fix this code. The point is that if you are developing a mobile application, you should not be logging sensitive information to the system logs. It's a security risk and a bad practice.
 
 To remediate insecure logging vulnerabilities, developers should simply avoid logging sensitive information to the system logs in production environments. We can do that by preventing logging at all costs (removing all log calls in release mode), use a logging framework ([Timber](https://github.com/jakewharton/timber) in Java, [Logger](https://pub.dev/packages/logger) in Flutter) that supports conditional logging, or setting R8 proguard rules to remove all log levels except warning and error.
 
@@ -574,7 +574,7 @@ In the OWASP Mobile Security framework, auditing cloud database authorization is
 
 ## Dynamic Analysis
 
-We first need to know if the application uses Firebase and what is the endpoint URL. We can use tools like [Wireshark](https://www.wireshark.org/) or [HTTP Toolkit](https://httptoolkit.com/) to intercept the traffic and see if the application uses Firebase. We can also use [Frida](https://frida.re/) to hook into the application and see if it uses Firebase.
+We first need to know if the application uses Firebase and what the endpoint URL is. We can use tools like [Wireshark](https://www.wireshark.org/) or [HTTP Toolkit](https://httptoolkit.com/) to intercept the traffic and see if the application uses Firebase. We can also use [Frida](https://frida.re/) to hook into the application and see if it uses Firebase.
 
 [Burp Suite](https://portswigger.net/burp) is not the best tool for this task, as it is designed for HTTP/HTTPS traffic interception and tampering, which is not the case for Firebase Realtime Database and Cloud Firestore, which use custom protocols, which operate over WebSockets or gRPC instead of HTTP/HTTPS.
 
@@ -727,7 +727,7 @@ Behind the scenes, `SharedPreferences` stores data in XML files located in the a
 
 ## Dynamic Analysis
 
-We can demonstrate it by accessing the file system of the application and looking for the shared preferences file, through ADB. First, we need to fill the input fields in the page and click on the button to store the credentials.
+We can demonstrate it by accessing the file system of the application and looking for the shared preferences file through ADB. First, we need to fill the input fields in the page and click on the button to store the credentials.
 
 ![image.png](/image-45.png)
 
@@ -860,7 +860,7 @@ In the OWASP Mobile Application Security framework, this weakness is formally ca
 
 ## Remediation & Code Fix
 
-To remediate insecure `SharedPreferences` storage, sensitive data such as user credentials, session tokens, access keys, or personally identifiable information (PII) must never be stored in cleartext XML files. Standard `SharedPreferences` offers no built-in encryption layer, relying entirely on OS file permissions which are bypassed on rooted devices, custom ROMs, malware with root access, or via ADB backup extraction.
+To remediate insecure `SharedPreferences` storage, sensitive data such as user credentials, session tokens, access keys, or personally identifiable information (PII) must never be stored in cleartext XML files. Standard `SharedPreferences` offers no built-in encryption layer, relying entirely on OS file permissions, which are bypassed on rooted devices, custom ROMs, malware with root access, or via ADB backup extraction.
 
 Developers can secure local key-value data by using encrypted storage solutions, restricting application backup rules, or migrating to modern Android storage architectures.
 
