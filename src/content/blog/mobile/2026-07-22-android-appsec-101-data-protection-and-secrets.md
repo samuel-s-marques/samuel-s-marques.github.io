@@ -99,7 +99,7 @@ Using Wireshark for logcat analysis is particularly useful because it allows us 
 
 ## Static Analysis
 
-We can start by using [JADX-GUI](https://github.com/skylot/jadx) to decompile the APK file and inspect the source code. Then, we look for any potential sources of sensitive data leaks. In this case, we are looking for `Log.d`, `Log.e`, `Log.i`, `Log.v`, and `Log.w` calls that might be logging sensitive information. In this specific case we can see an instance of `Log.d` in the `infosecadventures.allsafe.challenges.InsecureLogging.java` file.
+We can start by using [JADX-GUI](https://github.com/skylot/jadx) to decompile the APK file and inspect the source code. Then, we look for any potential sources of sensitive data leaks. In this case, we are looking for `Log.d`, `Log.e`, `Log.i`, `Log.v`, and `Log.w` calls that might be logging sensitive information. In this specific case, we can see an instance of `Log.d` in the `infosecadventures.allsafe.challenges.InsecureLogging.java` file.
 
 ```java
 package infosecadventures.allsafe.challenges;
