@@ -31,14 +31,6 @@ Mobile applications frequently handle sensitive data — from API keys and authe
 
 In **Part 1** of this series, we examine five fundamental data protection vulnerabilities inside [Allsafe](https://github.com/t0thkr1s/allsafe-android), analyze the decompiled source code using [JADX-GUI](https://github.com/skylot/jadx), and demonstrate how to remediate each flaw using Android security best practices.
 
-## Index
-
-- [Module 1: Insecure Logging](# Module 1: Insecure Logging)
-- [Module 2: Hardcoded Credentials](# Module 2: Hardcoded Credentials)
-- [Module 3: Insecure Firebase Configurations](# Module 3: Insecure Firebase Configurations)
-- [Module 4: Insecure Shared Preferences](# Module 4: Insecure Shared Preferences)
-- [References & Additional Resources](# References & Additional Resources)
-
 # Module 1: Insecure Logging
 
 > **Quick Attack Preview**
