@@ -5,8 +5,8 @@ modDatetime: 2026-07-22
 title: Android AppSec 101 - Data Protection & Secrets
 ogImage: Android AppSec 101 - Data Protection & Secrets
 slug: android-appsec-101-part-1
-featured: false
-draft: true
+featured: true
+draft: false
 tags:
   - mobile
   - android
@@ -85,7 +85,7 @@ adb logcat --pid 4700 | grep "ALLSAFE"
 adb shell "logcat --pid 4700 | grep ALLSAFE"
 ```
 
-[screenshot of logcat output]
+![Captura de tela 2026-07-22 181543.png](</Captura de tela 2026-07-22 181543-1.png>)
 
 Alternatively, if you prefer a graphical interface or need advanced filtering options, [Wireshark](https://www.wireshark.org/) natively supports Android logcat capture via its built-in `androiddump` plugin.
 
@@ -103,7 +103,7 @@ logcat_text.tag contains "ALLSAFE"
 logcat_text contains "secret"
 ```
 
-[screenshot of wireshark logcat capture]
+![Captura de tela 2026-07-23 170608.png](</Captura de tela 2026-07-23 170608.png>)
 
 Using Wireshark for logcat analysis is particularly useful because it allows us to correlate system logs and network traffic side-by-side on a single timeline.
 
@@ -255,13 +255,13 @@ In the OWASP Mobile Application Security framework, embedding secrets inside the
 
 As the screenshot below shows, we need to find two (2) hardcoded username and password combinations.
 
-[screenshot of login screen]
+![image.png](/image-42.png)
 
 ## Dynamic Analysis
 
-As we can see in the screenshot, there's a button to initiate login request, so the first thing we could try is to intercept the request using Burp Suite as a proxy.
+As we can see in the screenshot above, there's a button to initiate a login request, so the first thing we could try is to intercept the request using Burp Suite as a proxy.
 
-[screenshot of login request in burp suite]
+![Captura de tela 2026-07-22 211029.png](</Captura de tela 2026-07-22 211029.png>)
 
 ```http
 POST / HTTP/1.1
@@ -292,19 +292,15 @@ Connection: keep-alive
 
 We can clearly see it's a SOAP request for login, where the UsernameToken is **"superadmin"** and the PasswordText is **"supersecurepassword"**, both hardcoded in the application. This confirms that the application is embedding authentication credentials directly into outbound requests. However, to determine whether additional secrets are present elsewhere in the APK, we continue with static analysis.
 
-[screenshot of the login request in burp suite]
-
-To verify there are no other hardcoded credentials, we can use static analysis tools such as JADX-GUI to decompile the APK file and inspect the source code.
-
 ## Static Analysis
 
-Using JADX-GUI we can decompile the APK file and inspect the source code of the `HardcodedCredentials` fragment, which is shown below.
+Using JADX-GUI, we can decompile the APK file and inspect the source code of the `HardcodedCredentials` fragment, which is shown below.
 
-[screenshot of HardcodedCredentials fragment in JADX-GUI]
+![jadx-gui-screenshot.png](/jadx-gui-screenshot.png)
 
-We can see on line 29 that there's a POST request body being built, with the username and password hardcoded in the application. Those credentials match what we saw in Burp Suite, so we have found **the first pair of credentials**: `superadmin:supersecurepassword`.
+We can see on **line 29** that there's a POST request body being built, with the username and password hardcoded in the application. Those credentials match what we saw in Burp Suite, so we have found **the first pair of credentials**: `superadmin:supersecurepassword`.
 
-Now, to find the second pair of credentials, we need to read and understand the source code of the login callback function, which is shown below, in the Code Breakdown.
+Now, to find the second pair of credentials, we need to read and understand the source code of the login callback function, which is shown below in the Code Breakdown.
 
 ```java
 package infosecadventures.allsafe.challenges;
@@ -481,7 +477,7 @@ The application is fetching a string resource referenced by `R.string.dev_env`. 
 </resources>
 ```
 
-[screenshot of strings.xml]
+![Captura de tela 2026-07-22 212223.png](</Captura de tela 2026-07-22 212223.png>)
 
 We can see that the value of `dev_env` is `https://admin:password123@dev.infosecadventures.com`. This is the second hardcoded credential we needed to find.
 
@@ -582,7 +578,7 @@ A frequent misconception is assuming that database endpoints are secret simply b
 
 In the OWASP Mobile Security framework, auditing cloud database authorization is covered under [MASTG-KNOW-0039](https://mas.owasp.org/MASTG/) and directly violates the [MASVS-STORAGE](https://mas.owasp.org/MASVS/05-MASVS-STORAGE/) and [MASVS-AUTH](https://mas.owasp.org/MASVS/07-MASVS-AUTH/) security requirements. It also maps to global standards [CWE-276: Incorrect Default Permissions](https://cwe.mitre.org/data/definitions/276.html) and [CWE-306: Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html).
 
-[screenshot of insecure firebase configurations screen]
+![image.png](/image-43.png)
 
 ## Dynamic Analysis
 
@@ -612,7 +608,7 @@ Apply the following Wireshark display filter to isolate DNS queries targeting Fi
 dns.qry.name contains "firebaseio.com" || dns.qry.name contains "googleapis.com"
 ```
 
-[screenshot of wireshark dns capture]
+![Captura de tela 2026-07-24 215339.png](</Captura de tela 2026-07-24 215339.png>)
 
 In the capture output, you will see a `Standard query A allsafe-8cef0.firebaseio.com` request followed by the resolved IP address, confirming the target database hostname.
 
@@ -622,15 +618,15 @@ In the capture output, you will see a `Standard query A allsafe-8cef0.firebaseio
 
 When we tap "Query Database" in Allsafe, we can see the following requests in HTTP Toolkit:
 
-[screenshot of http toolkit]
-
-[screenshot of http toolkit showing the firebase request]
+![Captura de tela 2026-07-24 220503.png](</Captura de tela 2026-07-24 220503.png>)
 
 From the capture, we can extract more information than with Wireshark, such as the WebSocket frames and the data being sent and received.
 
 - **Firebase Hostname:** `s-gke-usc1-nssi2-3.firebaseio.com`
 - **Database Namespace (`ns`):** `allsafe-8cef0`
 - **Root REST Endpoint:** `https://allsafe-8cef0.firebaseio.com`
+
+![Captura de tela 2026-07-24 220511.png](</Captura de tela 2026-07-24 220511.png>)
 
 ### Exploiting the Insecure REST Endpoint (`.json`)
 
@@ -664,7 +660,7 @@ If you search for `firebaseio` in the decompiled code, you will find the base UR
 <string name="firebase_database_url">https://allsafe-8cef0.firebaseio.com</string>
 ```
 
-[screenshot of jadx showing strings.xml]
+![Captura de tela 2026-07-26 125558.png](</Captura de tela 2026-07-26 125558.png>)
 
 ## Remediation & Code Fix
 
@@ -735,13 +731,13 @@ Behind the scenes, `SharedPreferences` stores data in XML files located in the a
 
 `SharedPreferences` are not insecure by default, though. They are just not designed to securely store secrets.
 
-[screenshot of shared preferences page]
+![image.png](/image-44.png)
 
 ## Dynamic Analysis
 
 We can demonstrate it by accessing the file system of the application and looking for the shared preferences file, through ADB. First, we need to fill the input fields in the page and click on the button to store the credentials.
 
-[screenshot of filled shared preferences page]
+![image.png](/image-45.png)
 
 After doing it, we can access the file system of the application and look for the shared preferences file.
 
@@ -772,11 +768,9 @@ We can see that the credentials are not encrypted and are stored in plain text, 
 
 During static analysis, I searched for calls to `getSharedPreferences()`. Applications commonly use `SharedPreferences` to persist user settings, but they're also frequently (and incorrectly) used to store credentials, authentication tokens, and other sensitive values, as seen in the impact section of this module. This makes them a high-priority target during source review.
 
-[screenshot showing JADX-GUI with the search results for getSharedPreferences()]
+![Captura de tela 2026-07-23 131601.png](</Captura de tela 2026-07-23 131601.png>)
 
 Using JADX-GUI, we can inspect the source code of the `InsecureSharedPreferences` fragment that stores the credentials, which is shown below.
-
-[screenshot of jadx-gui with the source code of the fragment]
 
 ```java
 package infosecadventures.allsafe.challenges;
