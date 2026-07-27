@@ -29,7 +29,7 @@ Mobile applications frequently handle sensitive data — from API keys and authe
 
 In **Part 1** of this series, we examine five fundamental data protection vulnerabilities inside [Allsafe](https://github.com/t0thkr1s/allsafe-android), analyze the decompiled source code using [JADX-GUI](https://github.com/skylot/jadx), and demonstrate how to remediate each flaw using Android security best practices.
 
-# Module 1: Insecure Logging
+# Insecure Logging
 
 > **Quick Attack Preview**
 >
@@ -237,7 +237,7 @@ Documented cases of log-based incidents:
 - [Leaked OAuth response code in logs in Coinbase - hackerone](https://hackerone.com/reports/5314)
 - [Logged plaintext passwords in EquityPandit - SentinelOne](https://www.sentinelone.com/vulnerability-database/cve-2019-25605/)
 
-# Module 2: Hardcoded Credentials
+# Hardcoded Credentials
 
 Embedding static strings such as API secrets, database passwords, or private keys directly inside application code or resource files relies on "security through obscurity." Android APKs can be effortlessly decompiled back into readable Java/Kotlin code or resource XMLs.
 
@@ -560,7 +560,7 @@ There are some documented cases of hardcoded credentials in real-world applicati
 - [Twilio Credentials Hardcoded in Mobile Apps Expose Calls, Texts - Eduard Kovacs, SecurityWeek](https://www.securityweek.com/twilio-credentials-hardcoded-mobile-apps-expose-calls-texts/)
 - [Many Mobile Apps Unnecessarily Leak Hardcoded Keys: Analysis - Ionut Arghire, SecurityWeek](https://www.securityweek.com/many-mobile-apps-unnecessarily-leak-hardcoded-keys-analysis/)
 
-# Module 3: Insecure Firebase Configurations
+# Insecure Firebase Configurations
 
 Firebase Realtime Database and Cloud Firestore are cloud-hosted backend-as-a-service (BaaS) platforms widely used in mobile applications for data synchronization and storage. Unlike traditional backends where access control is enforced by custom server APIs, Firebase relies on cloud-side **Security Rules** to authorize read and write requests. When developers deploy apps with default or overly permissive rules (such as allowing global `.read` or `.write` access without authentication), anyone with knowledge of the Firebase database endpoint can directly inspect, alter, or wipe stored data.
 
@@ -713,7 +713,7 @@ Documented research and references:
 - [OWASP Mobile Top 10 - M9: Insecure Data Storage](https://owasp.org/www-project-mobile-top-10/2023-risks/m9-insecure-data-storage.html)
 - [Firebase Database Takeover in Zego Sense Android app](https://hackerone.com/reports/1065134)
 
-# Module 4: Insecure Shared Preferences
+# Insecure SharedPreferences
 
 Android has [different ways to store data](https://developer.android.com/training/data-storage), such as databases and shared storage. One of them is `SharedPreferences`. It is a lightweight key-value storage system that allows you to store small amounts of data, such as strings, integers, booleans, floats, and long. [It has many drawbacks](https://developer.android.com/reference/kotlin/android/content/SharedPreferences) and is not recommended to use in modern applications, but it is still widely used in legacy applications.
 
