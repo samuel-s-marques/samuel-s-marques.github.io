@@ -27,7 +27,7 @@ This post is **Part 1** of the **Android AppSec 101 Series**, where we analyze r
 
 Mobile applications frequently handle sensitive data — from API keys and authentication tokens to personal user information. When developers rely on client-side storage without proper encryption or leave debugging tools active in production, attackers can extract this data with minimal effort.
 
-In **Part 1** of this series, we examine five fundamental data protection vulnerabilities inside [Allsafe](https://github.com/t0thkr1s/allsafe-android), analyze the decompiled source code using [JADX-GUI](https://github.com/skylot/jadx), and demonstrate how to remediate each flaw using Android security best practices.
+In **Part 1** of this series, we examine four fundamental data protection vulnerabilities inside [Allsafe](https://github.com/t0thkr1s/allsafe-android), analyze the decompiled source code using [JADX-GUI](https://github.com/skylot/jadx), and demonstrate how to remediate each flaw using Android security best practices.
 
 # Insecure Logging
 
